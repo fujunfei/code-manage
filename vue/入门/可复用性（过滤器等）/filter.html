@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<div id="test">
+			{{time | dateFilter}}
+		</div>
+		
+		<script>
+			Vue.filter('dateFilter', function (val) {
+				if (!val) return '';
+				val = new Date(val);
+				return val.getFullYear()+"-"+(val.getMonth()+1)+"-"+val.getDate()+" "+val.getHours()+":"+val.getMinutes()+":"+val.getSeconds()
+			})
+			let app = new Vue({
+				el: '#test',
+				data: {
+					time: 1535335436000
+				}
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<div id="test">
+			<ul>
+				<todo-item v-for='item in obj' :key='item' v-bind:todo='item'></todo-item>
+			</ul>
+			<ul>
+				<he-llo v-bind:todo='true'></he-llo>
+			</ul>
+			<ul>
+				<h-i v-for='item in obj2' :key='item' v-bind:todo='item'></h-i>
+			</ul>
+		</div>
+		<script>
+			//创建组件
+			Vue.component('todo-item',{
+				props: ['todo'],
+				template: '<li>{{ todo }}</li>'
+			})
+			Vue.component('he-llo',{
+				props: ['todo'],
+				template: `<li v-if='todo'>{{ 212 }}</li>`
+			})
+			let app = new Vue({
+				el: '#test',
+				data: {
+					obj: ['zhangsan', 'lisi', 'wangwu'],
+					obj2: ['zhangsan', 'lisi', 'wangwu']
+				}
+			})
+		</script>
+	</body>
+</html>

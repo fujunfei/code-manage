@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<div id="test">
+			<div>{{message}}</div> 
+			<input type="text" v-model="message"></input> <br />
+			<input v-bind:value="searchText" v-on:input="fn($event)" />{{searchText}}
+		</div>
+		<script>
+			let app = new Vue({
+				el: '#test',
+				data: {
+					'message': 'champion',
+					'searchText': '测试'
+				},
+				methods: {
+					fn: function (e) {
+						console.log(e);
+						this.searchText = e.target.value;
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

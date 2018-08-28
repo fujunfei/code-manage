@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<div id="test">
+			<p>v-model在组件中的input</p>
+			<he-llo v-model='msg' @fn='count++'></he-llo>{{count}}
+			<br />
+			<he-ll :todo='msg2' @fn='count1++'></he-ll>{{count1}}
+			
+			<p>v-model在组件中的checkbox</p>
+			<check-box v-model='selected' @chan='count2++'></check-box>{{count2}}
+		</div>
+		
+		
+		<script>
+			Vue.component('he-llo', {
+				template: `<input type='text' :value='value' @input='$emit("fn", $event.target.value)'/>`,
+				props: ['value']
+			})
+			Vue.component('he-ll', {
+				template: `<input type='text' :value='todo' @input='$emit("fn", $event.target.value)'/>`,
+				props: ['todo']
+			})
+			Vue.component('check-box', {
+				template: `<div>
+						<input type='checkbox' :checked='checked' @change='$emit("chan", $event.target.checked)'/>agree
+					</div>`,
+				props: ['checked'],
+				model: {
+					prop: 'checked',
+					event: 'change'
+				}
+			})
+			let app = new Vue({
+				el: '#test',
+				data: {
+					'msg': 'ceshi',
+					'count': 0,
+					'msg2': 'ceshi',
+					'count1': 0,
+					'selected': true,
+					'count2': 0
+				}
+			})
+		</script>
+	</body>
+</html>

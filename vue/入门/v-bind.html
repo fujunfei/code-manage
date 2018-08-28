@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<style>
+		.color{
+			color: red;
+		}
+	</style>
+	<body>
+		<p>示例1 v-bind的缩写形式:</p>
+		<div id="test">
+			<span :title="message" :class="{'color': setColor}">{{message}}</span>
+		</div>
+		
+		<p>示例2:</p>
+		<div id="test2">
+			<span v-bind:title="message">{{message}}</span>
+		</div>
+		
+		<p>示例3 绑定值为boolean类型时:</p>
+		<div id="test3">
+			<input type="text" v-bind:disabled="bool" v-model="message"/>
+		</div>
+		<script>
+			var app = new Vue({
+				el: "#test",
+				data: {
+					message: '提示消息！',
+					setColor: true
+				}
+			})
+			var app2 = new Vue({
+				el: "#test2",
+				data: {message: '提示消息2！'}
+			})
+			var app3 = new Vue({
+				el: "#test3",
+				data: {message: '不可编辑的文本！',bool: false}
+			})
+//			app3.bool = true;
+		</script>
+	</body>
+</html>

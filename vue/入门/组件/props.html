@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<style>
+		.col {
+			color: red;
+		}
+	</style>
+	<body>
+		<div id="test">
+			<p>1、props简单示例</p>
+			<hel-lo title='这是测试文字!' quest='你好，'></hel-lo>
+			<h-i :message='msg'></h-i>
+			<h-i :message='msg2'></h-i>
+			
+			<p>2、props验证</p>
+			<val-data :name='obj3.name' :friends='obj3.friends' :age='obj3.age' :phone='obj3.phone'></val-data>
+			
+			<p>3、单向数据流， 改变props传递的值</p>
+			<ul>
+				<hi-i v-for='item in obj2' :key='item' v-bind:todo='item'></hi-i>
+			</ul>
+			<ul>
+				<hi-data v-for='item in obj2' :key='item' v-bind:todo='item'></hi-data>
+			</ul>
+			
+			<p>4、非prop的特性</p>  <!--class属性是prop中没有定义的属性，但会添加到组件的根元素中-->
+			<hel-lo title='这是测试文字!' quest='你好，' class='col'></hel-lo>
+		</div>
+		
+		<script>
+			Vue.component('hel-lo',{
+				template: '<div>{{quest+title}}</div>',
+				props: ['title','quest']
+			});
+			Vue.component('h-i',{
+				template: '<div>{{message.name + " is " + message.action}}</div>',
+				props: ['message']
+			});
+			Vue.component('hi-i',{
+				props: ['todo'],
+				template: `<li v-if='todo'>{{ todos }}</li>`,
+				computed:{
+					todos: function () {
+					return this.todo + ' hi';
+				}}
+			})
+			
+			Vue.component('hi-data',{
+				props: ['todo'],
+				template: `<li v-if='todo'>{{ todos }}</li>`,
+				data: function () {
+					return {todos: this.todo + ' hi'}
+				}
+			})
+			
+			Vue.component('val-data',{
+				template:`<div><span v-if='visible'>大家好!</span><span>{{name+'现在'+age+'岁,朋友是'+ friends+',喜欢'+like+',电话是'+phone}}</span></div>`,
+				props: {
+					name: {
+						type: String,
+						required: true
+					},
+					age: {
+						type: Number,
+						required: true
+					},
+					friends: {
+						type: Array,
+						default: function () {
+							return ['lisi'];
+						}
+					},
+					like: {
+						type: String,
+						default: '逛街'
+					},
+					phone: {
+						type: Number,
+						validator: function (value) {
+							let re = /(^1[3|4|5|7|8]\d{9}$)|(^09\d{8}$)/g;
+                			let bRt = re.test(value);
+							return bRt;
+						}
+					},
+					visible: {
+						type: Boolean,
+						default: true
+					}
+				}
+			})
+			let app = new Vue({
+				el: '#test',
+				data: {
+					msg: {name:'zhangsan',action: 'eatting'},
+					msg2: {name:'li',action: 'playying game'},
+					obj2: ['zhangsan', 'lisi', 'wangwu'],
+					obj3: {name:'zhangsan', age:25, friends: ['lisi','wangwu'], phone:15278946325}
+				}
+			})
+			setTimeout(function() {
+				app.obj2= [1,2,3];
+			},1000)
+		</script>
+	</body>
+</html>

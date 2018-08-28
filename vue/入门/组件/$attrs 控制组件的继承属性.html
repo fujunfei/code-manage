@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<div id="test">
+			<he-llo title='这是提示文字'></he-llo>
+		</div>
+		
+		<script>
+			Vue.component('he-llo',{
+				template: `<div>
+					<span v-bind='$attrs'>这是一段文字 {{$attrs.title}}</span>
+					</div>`,
+				inheritAttrs: false   //取消默认继承到根元素
+			})
+			let app = new Vue({
+				el: '#test'
+			})
+		</script>
+	</body>
+</html>

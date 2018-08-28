@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<div id="test">
+			<p>1、循环数组</p>
+			<div v-for="(item, index) in arr" :key='item.id'>{{item.name}}</div>
+			<p>2、循环对象</p>
+			<div v-for='(value, key, index) in obj'> {{index+1 + '、' + key + ': ' + value}}</div>
+			<p>3、Vue 不能检测以下方式变动的数组</p>
+			<div v-for='item in arr2'>{{item}}</div>
+			<p>4、为已有对象赋值多个新属性</p>
+			<div v-for='item in obj2'>{{item}}</div>
+		</div>
+		
+		<script>
+			let app = new Vue({
+				el: "#test",
+				data: {
+					arr: [ {name:'zhangsna',id:1}, {name:'lisi',id:2}, {name:'wangwu',id:3}],
+					obj: {
+						'name': 'zhangsan',
+						'gender': '男',
+						'habit': 'swim'
+					},
+					arr2: [1, 2, 3],
+					obj2: {
+						
+					}
+				}
+			})
+			
+			//app.arr2[0]= 0;   //这种方式失败   Vue不能检测这种变动数组的方式，无法同步数据
+			//更新这种类型数据的 方法1
+			//app.arr2.splice(0, 1, 0);   //splice方法可以同步数据
+			//方法2
+			Vue.set(app.arr2, 0, 0);   //或 app.$set(app.arr2, 0, 0)
+			
+			//为已有对象赋值多个新属性
+			app.$set(app.obj2, 'name', '测试文字...');
+			app.obj2 = Object.assign({}, app.obj2, {
+			  	age: 27,
+			  	favoriteColor: 'Vue Green'
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<div id="test">
+			性别：<input type="radio" v-model="gender" value="1"/>男 <input type="radio" v-model="gender" value="0"/>女 {{gender}}
+			<br />
+			爱好(方式1)： <input type="checkbox" v-model="habit.play" value="1" />游戏  <input type="checkbox" v-model="habit.learn" value="2" />学习
+			      <input type="checkbox" v-model="habit.sport" value="3" />篮球
+			      {{habit}}
+	      	<br />
+	      	爱好(方式2)： <input type="checkbox" v-model="hobby" :value="num[0]"/>游戏  <input type="checkbox" v-model="hobby" :value="num[1]"/>学习
+			      <input type="checkbox" v-model="hobby" :value="num[2]"/>篮球
+			      {{hobby}}
+		</div>
+		<script>
+			let app = new Vue({
+				el: '#test',
+				data: {
+					gender: 0,
+					habit: {
+						play: true,
+						learn: true,
+						sport:false
+					},
+					hobby: [],
+					num: [1,2,3]
+				}
+			})
+		</script>
+	</body>
+</html>

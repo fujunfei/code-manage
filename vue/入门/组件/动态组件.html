@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<style>
+		.tab-button{
+			padding: 6px 10px;
+		  	border-top-left-radius: 3px;
+		  	border-top-right-radius: 3px;
+		  	border: 1px solid #ccc;
+		  	cursor: pointer;
+		  	background: #f0f0f0;
+		  	margin-bottom: -1px;
+		  	margin-right: -1px;
+		}
+		.tab-button:hover{
+			background: #e0e0e0;
+		}
+		.tab-button.active{
+			background: #e0e0e0;
+		}
+		.content{
+			border: 1px solid #ccc;
+  			padding: 10px;
+  			height: 200px;
+		}
+	</style>
+	<body>
+		<div id="test">
+			<button v-for="item in bt" :key='item' @click="currentItem=item" :class='["tab-button", {"active": item===currentItem}]'>{{item}}</button>
+			<component
+				:is='currentTabComponent'
+				class="content"
+			></component>
+		</div>
+		
+		<script>
+			Vue.component('tab-home',{
+				template:`<div>Home component</div>`
+			})
+			Vue.component('tab-post',{
+				template:`<div>post component</div>`,
+			})
+			Vue.component('tab-archive',{
+				template:`<div>archive component</div>`
+			})
+			let app = new Vue({
+				el: '#test',
+				data: {
+					bt: ['home', 'post', 'archive'],
+					currentItem: 'home'
+				},
+				computed: {
+					currentTabComponent: function () {
+						return 'tab-'+this.currentItem;
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

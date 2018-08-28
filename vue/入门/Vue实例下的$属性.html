@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<div id='test'>
+			<span>{{message}}</span>
+		</div>
+		<script>
+			let data = {'message': '这是一段消息！'};
+			let app = new Vue({
+				el: '#test',
+				data: data
+			})
+			//app.$el === document.getElementById('#test')
+			console.log(app.$el);
+			app.$watch('message', function (newValue, oldValue) {
+				console.log('消息监听被触发！');
+			})
+			app.$data === data;  //true
+			app.message === '这是一段消息！' //true;
+		</script>
+	</body>
+</html>

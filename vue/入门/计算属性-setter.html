@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<div id="test">
+			<p>{{'全名：'+fullName}}</p>
+		</div>
+		<script>
+			let app = new Vue({
+				el: '#test',
+				data: {
+					firstName: 'zhang',
+					lastName: 'san'
+				},
+				computed: {
+					fullName: {
+						get: function () {
+							return this.firstName + this.lastName;
+						},
+						set: function (val) {
+							this.lastName = val;
+						}
+					}
+				}
+			})
+			app.fullName = 'mou121';
+		</script>
+	</body>
+</html>

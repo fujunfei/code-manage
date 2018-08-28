@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<div id="test">
+			城市：
+			<select v-model="selected">
+				<option v-for="item in city" :value="item.value" :key='item.value'>{{item.name}}</option>
+			</select>
+			{{selected}}
+		</div>
+		<script>
+			let app = new Vue({
+				el: '#test',
+				data: {
+					city: [
+						{'name': '武汉', value: 101},
+						{'name': '杭州', value: 102},
+						{'name': '成都', value: 103}
+					],
+					selected: 102
+				}
+			})
+		</script>
+	</body>
+</html>

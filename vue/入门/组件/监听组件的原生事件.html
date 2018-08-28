@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<div id="test">
+			<p>通过.native修饰符，默认监听到组件根元素的原生事件</p>
+			<p>1、监听组件根元素input</p>
+			<he-llo @focus.native='go'></he-llo>
+			
+			<p>2、监听组件子元素input, 通过$listeners对象来实现</p>
+			<he-ll @focus.native='goon'></he-ll>
+		</div>
+		
+		<script>
+			Vue.component('he-llo',{
+				template: `<input type='text' />`
+			})
+			
+			//demo没成功
+//			Vue.component('he-ll',{
+//				template: `<label><input type='text' v-on='inputListeners' /></label>`,
+//				computed: {
+//					inputListeners: function () {
+//						let _this = this;
+//						return Object.assign({},
+//							_this.$listeners,
+//							{
+//								input: function (event) {
+//						            _this.$emit('focus', event.target.value);
+//					          	}
+//							}
+//						);
+//					}
+//				}
+//			})
+			let app = new Vue({
+				el: '#test',
+				methods: {
+					'go': function () {
+						console.log('go');
+					},
+					'goon': function (value) {
+						console.log('go on');
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

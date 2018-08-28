@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<p>$emit对象，实现向父组件传播事件</p>
+		<div id="test">
+			<he-llo :post='post' @change-content='changeContent'></he-llo>
+		</div>
+		<script>
+			Vue.component('he-llo',{
+				props: ['post'],
+				template: `<div>
+					<h3>{{post.title}}</h3>
+					<p>{{post.content}}</p>
+					<button @click='$emit("change-content")'>切换正文</button>  
+					<button @click='cli'>切换正文</button>
+					</div>`,
+				methods: {
+					cli: function () {
+						this.$emit("change-content");
+					}
+				}
+			});
+			let app = new Vue({
+				el: '#test',
+				data: {
+					post: {title:'标题1',a:'这是一段正文！',b:'这是另一段正文！',content:'这是一段正文！'}
+				},
+				methods: {
+					changeContent: function () {
+						this.post.content = this.post.a === this.post.content ?  this.post.b:this.post.a;
+					}
+				}
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<div id="test"> 
+			<span>{{message}}</span>
+			<button v-on:click="change">逆转消息</button>
+		</div>
+		<script>
+			let app = new Vue({
+				el: '#test',
+				data: {
+					'message': 'champion'
+				},
+				methods: {
+					'change': function () {
+						this.message = this.message.split('').reverse().join('');
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

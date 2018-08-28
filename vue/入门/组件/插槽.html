@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<div id="test">
+			<p>1、插槽的基本用法， 插槽中的张先生是作为默认值用，可以被替换</p>
+			<he-llo></he-llo> <br />
+			<he-llo>王先生，</he-llo>
+			
+			<p>2、作用域插槽： 从子组件获取数据的插槽</p>
+			<todo-list :todo='list'>
+				<template slot-scope='slotProps'>
+					<span v-if='slotProps.todo.pass'>✓</span>
+					{{slotProps.todo.name}}
+				</template>
+			</todo-list>
+			
+			<p>3、具名插槽：多个插槽</p>
+			<mul-slot>
+				<template slot='header'><h3>开头</h3></template>
+				<p>这是正文！</p>
+				<template slot='footer'><h5>尾部</h5></template>
+			</mul-slot>
+		</div>
+		
+		<script>
+			Vue.component('he-llo', {
+				template: `<span><slot>张先生,</slot>你好!</span>`
+			});
+			Vue.component('todo-list', {
+				template: `<ul>
+					<li v-for='item in todo' :key='item.name'>
+						<slot :todo='item'></slot>
+					</li>
+				</ul>`,
+				props: ['todo']
+			})
+			Vue.component('mul-slot', {
+				template:`<div>
+					<header>
+						<slot name='header'></slot>
+					</header>
+					<main>
+						<slot></slot>
+					</main>
+					<footer>
+						<slot name='footer'></slot>
+					</footer>
+					<h5>结束语:未完待续!</h5>
+				</div>`
+			})
+			let app = new Vue({
+				el: '#test',
+				data: {
+					list: [
+						{name:'zhangsan',pass:true},
+						{name:'lisi',pass:true},
+						{name:'wangwu',pass:false}
+					]
+				}
+			})
+		</script>
+	</body>
+</html>
