@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//1、数组的解构赋值 及默认值
+			let [a, b, c] = [1, 2, 3];
+			console.log(a);
+			let [d, f] = [4, 5, 6];
+			console.log(d);
+			console.log(f);
+			//默认值  只有当一个数组成员严格等于undefined，默认值才会生效。如果是null，默认值被取代
+			let [x = 1,y = 2,z = 3] = [undefined, null ,30];
+			let [x1 = 11,y1 = 22] = [];
+			console.log(x, y, z);
+			console.log(x1,y1);
+			//2、对象的解构赋值
+			let {a1=1, b1=2} = {undefined, b1: 'b1'};
+			console.log(a1,b1);
+			//3、字符串的解构赋值
+			const [a2, b2, c2, d2, e2] = 'hello';
+			let arr = [a2, b2, c2, d2, e2];
+			console.log(arr);
+		</script>
+	</body>
+</html>

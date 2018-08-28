@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//find找出第一个符合条件的元素  如果没找到则返回undefined
+			//findIndex 没找到返回-1
+			const arr = [5,10,25,12,15];
+			const num = arr.find((item, index) => item > 12);
+			const index = arr.findIndex((item,value) => item > 12);
+			console.log(num);
+			console.log(index);
+		</script>
+	</body>
+</html>

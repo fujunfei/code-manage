@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			const arr = [2,4,6,8];
+			for (let item of arr) {
+				console.log(item);
+			}
+			for ([keys,value] of arr.entries()){
+				console.log(keys,value);
+			}
+			for (let index of arr.keys()) {
+				console.log(index);
+			}
+			arr.push(10);
+			console.log(arr);
+		</script>
+	</body>
+</html>

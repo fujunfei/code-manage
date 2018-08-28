@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//设置函数参数的默认值 及作用域
+			//一旦设置了参数的默认值，函数进行声明初始化时，参数会形成一个单独的作用域（context）
+			let test = 12;
+			function abc(x = test) {
+				console.log(x);
+			}
+			abc();
+			
+			//在申明参数的作用域中取值
+			var x1 = 1;
+			function f1(x1, y = x1) {
+			  console.log(y);
+			}
+			f1(3);
+			
+			//箭头函数
+			let foo = 'outer';
+			function bar(func = () => foo) {
+			  let foo = 'inner';
+			  console.log(func());
+			}
+			//箭头右边是return的返回内容， {}里面是代码块，可以多于一条语句
+			var test2 = (sum1, sum2) => sum1 + sum2;
+			console.log(test2(5, 5));
+			var test3 = (sum1, sum2) => {return sum1 + sum2;};
+			console.log(test2(5, 5));
+			var test4 = (sum1, sum2) => {sum1 ++; return sum1 + sum2;};
+			console.log(test2(5, 5));
+			//由于大括号被解释为代码块，所以如果箭头函数直接返回一个对象，必须在对象外面加上括号，否则会报错。
+			let getTempItem = id => ({ id: id, name: "Temp" });
+			console.log(getTempItem('5623'));
+			
+			//双冒号运算符  函数绑定运算符是并排的两个冒号（::），双冒号左边是一个对象，右边是一个函数。该运算符会自动将左边的对象，作为上下文环境（即this对象），绑定到右边的函数上面。
+			function bar (x, y) {
+				return x + y;
+			}
+//			var foo1 = {1, 2}::bar;
+			var foo1 = bar.call(foo1, 10, 20);
+			var foo2;
+			console.log(foo1);
+			console.log(foo2);
+		</script>
+	</body>
+</html>

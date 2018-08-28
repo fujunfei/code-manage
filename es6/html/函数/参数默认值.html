@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			function fc(x=10,y=20){
+				console.log(x,y);
+			}
+			fc(undefined,5);
+			
+			function fc1({x=1,y=2} = {}){
+				console.log(x,y);
+			}
+			fc1({x:5,y:10});
+			fc1();
+			
+			//设置函数参数的默认值 及作用域
+			//一旦设置了参数的默认值，函数进行声明初始化时，参数会形成一个单独的作用域（context）
+			let test = 12;
+			function abc(x = test) {
+				console.log(x);
+			}
+			abc();
+		</script>
+	</body>
+</html>
