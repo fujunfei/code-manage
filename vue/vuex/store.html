@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="https://cdn.bootcss.com/vuex/3.0.1/vuex.min.js"></script>
+	</head>
+	<body>
+		<div id="test">
+			<div>{{message}}</div> 
+			<button @click='compute'>计数</button>
+		</div>
+		<script>
+			Vue.use(Vuex);
+			const store = new Vuex.Store({
+				state: {message: 10},
+				mutations: {
+					computes (state) {
+						state.message++
+					}
+				}
+			})
+			let app = new Vue({
+				el: '#test',
+				store,
+				data: {
+					message: store.state.message,
+				},
+				methods: {
+					compute: function(){
+						console.log(store)
+						console.log(this)
+						store.commit('computes')
+                    }
+				}
+			})
+			store.commit('computes')
+		</script>
+	</body>
+</html>
