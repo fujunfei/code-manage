@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <script src="./node_modules/zrender/dist/zrender.js"></script>
+
+        <div id="main" style="width:800px;height: 400px;background-color: gainsboro;"></div>
+        <script>
+            var zr = zrender.init(document.getElementById('main'));
+            var circle = new zrender.Circle({
+                shape: {
+                    cx: 150,
+                    cy: 50,
+                    r: 40
+                },
+                style: {
+                    fill: 'none',
+                    stroke: '#F00'
+                }
+            });
+            zr.add(circle);
+        </script>
+    </head>
+</html>
