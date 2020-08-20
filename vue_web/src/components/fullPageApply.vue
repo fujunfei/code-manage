@@ -131,6 +131,8 @@
         console.log('Changing scrollbar...')
         this.options.scrollBar = !this.options.scrollBar
       }
+    },
+    mounted(){
     }
   }
 </script>

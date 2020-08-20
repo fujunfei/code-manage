@@ -1,0 +1,110 @@
+<br><!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>获取坐标点位置，并连接点</title>
+        <style>
+        *{margin:0 ;padding:0;}
+        .svgcontainer,.container{position:absolute;top:50%;left:50%;margin-left:-400px;margin-top:-250px;width:800px;height:500px;}
+        .container{border:1px solid #ccc;cursor: pointer;}
+        .dot{width:10px;height:10px;border-radius:50%;position:absolute;background:#0078B6;margin-top:-5px;margin-left:-5px;}
+        .initdot{top:0;left:0;}
+        </style>
+    </head>
+    <body>
+        <div class="svgcontainer" id="svgcontainer"></div>
+        <div class="container" id="container">
+            <div class="dot initdot"></div>
+        </div>
+    </body>
+</html>
+<script>
+    var container=document.getElementById("container");
+    var svgcontainer=document.getElementById("svgcontainer");
+    //创建svg 注：动态创建svg ie8及以下不支持该方法
+    var svgns="http://www.w3.org/2000/svg";
+    var svger=document.createElementNS(svgns,"svg");
+    svger.setAttribute("width",container.clientWidth);
+    svger.setAttribute("height",container.clientHeight);
+    svger.setAttribute("viewBox","0 0 "+container.clientWidth+" "+container.clientHeight);
+    svgcontainer.appendChild(svger);
+     
+    container.onclick=function(e){
+        var e=e||window.event;//事件对象
+        //获取点击地鼠标位置
+        var mousePosition=mousePos(e);
+        //新增点
+        creatdot(mousePosition.x,mousePosition.y);
+        //连接点
+        var dots=container.children;
+        linedot(dots[dots.length-2],dots[dots.length-1]);
+    }
+     
+    //位置像素 数值化
+    function intpixel(str){
+        return str.substring(0,str.length-2)*1;
+    }
+     
+    //获取鼠标坐标
+    function mousePos(e){
+        if(e.pageX){
+            //IE9及以上支持pageX属性 相对文档
+            return {x:e.pageX,y:e.pageY}
+        }else{
+            return {x:e.clientX+document.body.scrollLeft-document.body.clientLeft,
+                    y:e.clientY+document.body.scrollTop-document.body.clientTop}
+        }
+    }
+    //新增点
+    function creatdot(posX,posY){
+        //相对container坐标
+        var newposX=posX-container.offsetLeft;
+        var newposY=posY-container.offsetTop;
+        var dot=document.createElement("div");
+        dot.setAttribute("class","dot");
+        //定位
+        dot.style.left=newposX+"px";
+        dot.style.top=newposY+"px";
+        container.appendChild(dot);
+    }
+    //连接点
+    function linedot(dot1,dot2){
+        var timepath;
+        if (timepath) {
+            clearTimeout(timepath)
+        };
+        var start={x:intpixel(dot1.style.left),y:intpixel(dot1.style.top)};
+        var end={x:intpixel(dot2.style.left),y:intpixel(dot2.style.top)};
+        var current={x:start.x,y:start.y};
+        //创建直线
+        var line=document.createElementNS(svgns,"line");
+        line.setAttribute("x1",dot1.style.left);
+        line.setAttribute("y1",dot1.style.top);
+        line.setAttribute("x2",dot1.style.left);
+        line.setAttribute("y2",dot1.style.top);
+        line.setAttribute("stroke","red");
+        line.setAttribute("fill","none");
+        svger.appendChild(line);
+        //角度
+        var tangle={
+                        sin:(end.y-start.y)/Math.sqrt((end.y-start.y)*(end.y-start.y)+(end.x-start.x)*(end.x-start.x)),
+                        cos:(end.x-start.x)/Math.sqrt((end.y-start.y)*(end.y-start.y)+(end.x-start.x)*(end.x-start.x))
+                        };
+        //动画
+        var step=function(){
+            //定义每帧移动位移大小为10
+            if(Math.abs(current.x-end.x)<10&&Math.abs(current.y-end.y)<10){
+                current.x=end.x;
+                current.y=end.y;
+            }else{
+                current.x+=10*tangle.cos;
+                current.y+=10*tangle.sin;
+                var timepath=setTimeout(step,17);//浏览器重绘速度为60帧每秒
+            }
+            line.setAttribute("x2",current.x+"px");
+            line.setAttribute("y2",current.y+"px");
+        }
+        step();
+    }
+     
+</script>

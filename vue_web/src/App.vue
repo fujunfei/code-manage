@@ -1,17 +1,16 @@
 <template>
   <div id="app">
-    <fullPageApply></fullPageApply>
+    <Menus></Menus>
+    <router-view style="position:absolute;left:200px"></router-view>
   </div>
 </template>
 
 <script>
-import fullPageApply from './components/fullPageApply.vue'
+import Menus from '@/views/menu/menu.vue'
 
 export default {
   name: 'App',
-  components: {
-    fullPageApply
-  }
+  components: {Menus}
 }
 </script>
 
