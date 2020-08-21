@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>线条拖拽</title>
+    </head>
+    <body>
+        <div id="content" style="overflow:auto;height: 700px;">
+            <svg
+                id="mysvg"
+                xmlns="http://www.w3.org/2000/svg"
+                width=1000
+                height=1000
+                viewBox="0 0 1000 1000"
+                style="background-color: bisque;"
+                >
+                <line x1="300" y1="380" x2="600" y2="300" style="stroke:red;stroke-width:2" />
+            </svg>
+            <div style="float: right;margin-right: 200px;">
+                <p>线段的右端可以拖拽</p>
+            </div>
+        </div>
+    </body>
+    <script>
+        let svgs = document.getElementById('mysvg');
+        let line = document.getElementsByTagName('line')[0];
+        let content = document.getElementById('content');
+
+        //线条前后端的位置
+        line.isx1 = line.getAttribute('x1');
+        line.isx2 = line.getAttribute('x2');
+        line.isy1 = line.getAttribute('y1');
+        line.isy2 = line.getAttribute('y2');
+
+        //计算初始化容器距离屏幕的距离
+        let contentLeft = content.getBoundingClientRect().left;
+        let contentTop = content.getBoundingClientRect().top; 
+        
+        //容器滚动条滚动过的距离
+        let scrolly = 0;
+        content.onscroll=function(e){
+            scrolly = content.scrollTop;
+        }
+
+        let startDot, endDot, dotOn=false, clickDotOn=false;
+        line.addEventListener('click', cli)
+        line.addEventListener('mouseover', function(e){
+            addDot();
+        })
+        let start;
+        line.addEventListener('mouseout', function(e){
+            if (start) {
+                clearTimeout(start)
+            }
+            start = setTimeout(()=>{
+                if (clickDotOn) return;
+                distroyDot();
+            },500)
+            
+        })
+        //线段点击事件的回调函数，使线条加粗，并添加端点
+        function cli() {
+            setTimeout(()=>{
+                clickDotOn = !clickDotOn
+                addDot();
+            },10)
+        }
+        //端点消失，线条正常粗细
+        function distroyDot() {
+            if (!dotOn) return;
+            line.style['stroke-width']='2';
+            let circle = svgs.getElementsByTagName('circle');
+            if (!circle) return;
+            svgs.removeChild(circle[0]);
+            svgs.removeChild(circle[0]);
+            dotOn = false
+        }
+        //在线段两端 添加端点，并实现右端点的拖拽
+        function addDot() {
+            if (dotOn) return;
+            line.style['stroke-width']='3';
+            startDot =  creatDot('start');
+            endDot =  creatDot('end');
+            svgs.appendChild(startDot);
+            svgs.appendChild(endDot);
+            dotOn = true;
+            //线段末端点的拖拽 8是google浏览器默认的margin值
+            endDot.onmousedown = function(){
+                svgs.onmousemove = function(e){
+                    line.isx2 = e.clientX-contentLeft;
+                    line.isy2 = e.clientY-contentTop+scrolly;
+                    endDot.setAttribute("cx", e.clientX-contentLeft)
+                    endDot.setAttribute("cy", e.clientY-contentTop+scrolly)
+                    line.setAttribute("x2", e.clientX-contentLeft)
+                    line.setAttribute("y2", e.clientY-contentTop+scrolly)
+                }
+                svgs.onmouseup = function(e){
+                    console.log(e.clientY)
+                    // console.log(contentTop+scrolly)
+                    line.isx2 = e.clientX-contentLeft;
+                    line.isy2 = e.clientY-contentTop+scrolly
+                    endDot.setAttribute("cx", e.clientX-contentLeft)
+                    endDot.setAttribute("cy", e.clientY-contentTop+scrolly)
+                    line.setAttribute("x2", e.clientX-contentLeft)
+                    line.setAttribute("y2", e.clientY-contentTop+scrolly)
+                    svgs.onmousemove = null
+                    svgs.onmouseup = null
+                    distroyDot();
+                    clickDotOn = false;
+                }
+            }
+        }
+        
+        //创建svg端点元素
+        function creatDot(startorend) {
+            let dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+            dot.setAttribute("cx",startorend == 'start' ? line.isx1 : line.isx2);
+            dot.setAttribute("cy",startorend == 'start' ? line.isy1 : line.isy2 );
+            dot.setAttribute("r","3");
+            dot.style.fill = 'red';
+            return dot
+        }
+        
+    </script>
+</html>

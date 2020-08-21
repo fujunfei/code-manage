@@ -22,7 +22,7 @@
     var container=document.getElementById("container");
     var svgcontainer=document.getElementById("svgcontainer");
     //创建svg 注：动态创建svg ie8及以下不支持该方法
-    var svgns="http://www.w3.org/2000/svg";
+    var svgns="http://www.w3.org/2000/svg";  //svg命名空间
     var svger=document.createElementNS(svgns,"svg");
     svger.setAttribute("width",container.clientWidth);
     svger.setAttribute("height",container.clientHeight);
@@ -47,6 +47,7 @@
      
     //获取鼠标坐标
     function mousePos(e){
+        console.log(e)
         if(e.pageX){
             //IE9及以上支持pageX属性 相对文档
             return {x:e.pageX,y:e.pageY}
