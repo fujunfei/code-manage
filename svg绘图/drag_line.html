@@ -84,7 +84,7 @@
             svgs.appendChild(startDot);
             svgs.appendChild(endDot);
             dotOn = true;
-            //线段末端点的拖拽 8是google浏览器默认的margin值
+            //线段末端点的拖拽 
             endDot.onmousedown = function(){
                 svgs.onmousemove = function(e){
                     line.isx2 = e.clientX-contentLeft;

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>animejs</title>
+        <script src="./node_modules/animejs/lib/anime.min.js"></script>
+    </head>
+    <body>
+        <article style="height: 200px;">
+            <div style="height: 50px;width: 50px;border-radius:25px;background-color: blue;" class="relative-values"></div>
+            <!-- <div style="height: 50px;width: 50px;background-color:green" class="green"></div> -->
+        </article>
+        <script>
+            anime({
+                targets: '.relative-values',
+                translateX: [0, 250], // from 100 to 250
+                delay: 500,
+                // direction: 'alternate',
+                // loop: true
+            });
+            // var relativeEl = document.querySelector('.relative-values');
+            // relativeEl.style.transform = 'translateX(100px)';
+
+            // anime({
+            //     targets: '.relative-values',
+            //     translateX: {
+            //         value: '*=2.5', // 100px * 2.5 = '250px'
+            //         duration: 1500
+            //     },
+            //     width: {
+            //         value: '-=20px', // 28 - 20 = '8px'
+            //         duration: 1800,
+            //         easing: 'easeInOutSine'
+            //     },
+            //     rotate: {
+            //         value: '+=2turn', // 0 * 2 = '2turn'
+            //         duration: 3600,
+            //         easing: 'easeInOutSine'
+            //     },
+            //     direction: 'alternate'
+            // });
+
+        </script>
+    </body>
+</html>
