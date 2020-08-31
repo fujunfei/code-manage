@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    </head>
+    <style>
+        .fade-enter-active, .fade-leave-active {
+            transition: opacity 2.5s;
+        }
+        .fade-enter, .fade-leave-to {
+            opacity: 0;
+        }
+    </style>
+	<body>
+		<div id="test">
+            <button @click='cli'>按钮</button>
+            <transition name='fade'>
+                <span v-if="isSaw">被看见了！(2秒后... 消失！)</span>
+            </transition>
+		</div>
+		<script>
+			let app = new Vue({
+				el: "#test",
+                data:{isSaw: true},
+                methods:{
+                    cli(){
+                        this.isSaw = !this.isSaw
+                    }
+                }
+			})
+			// setTimeout(function(){
+			// 	app.isSaw = false;
+			// },2000)
+		</script>
+	</body>
+</html>

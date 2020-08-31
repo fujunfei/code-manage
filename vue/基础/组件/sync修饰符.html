@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<div id="test">
+            父： {{obj.name}}
+			<he-llo :title.sync='obj.name'></he-llo>
+		</div>
+		
+		<script>
+			Vue.component('he-llo',{
+				template: `<div>
+                            <span>子：{{title}}</span>
+                            
+                        </div>`,
+                props: ['title'],
+                data(){
+                    return{
+                        // abc: '11111'
+                    }
+                },
+                created(){
+                    this.$emit('update:title', '更新后的')
+                    // this.title = '更新后的'
+                }
+			})
+			let app = new Vue({
+                el: '#test',
+                data() {
+                    return{
+                        obj: {name:'这是提示文字'}
+                    }
+                }
+			})
+		</script>
+	</body>
+</html>
