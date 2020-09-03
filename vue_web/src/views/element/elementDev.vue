@@ -1,5 +1,5 @@
 <template>
-    <div>待定</div>
+    <div class="ele">待定</div>
    
     
 </template>
@@ -8,6 +8,11 @@
 // import ElMenu from 'element-ui/packages/menu'
 // import ElMenuItem from 'element-ui/packages/menu-item'
 export default {
-    name: 'element',
+    name: 'elementDev',
 }
 </script>
+<style scoped>
+    .ele{
+        width: calc(100% - 200px);
+    }
+</style>

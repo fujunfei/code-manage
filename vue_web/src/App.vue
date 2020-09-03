@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Menus></Menus>
-    <router-view style="position:absolute;left:200px"></router-view>
+    <router-view style="position:absolute;left:200px;"></router-view>
   </div>
 </template>
 
@@ -21,6 +21,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  width: 100%;
   /* margin-top: 60px; */
 }
 </style>

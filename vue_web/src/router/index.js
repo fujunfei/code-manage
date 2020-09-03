@@ -1,10 +1,10 @@
 
 const routes = [
-    { path: '/', redirect: '/content'},
+    { path: '/', redirect: '/element-dev'},
     // { path: '/menu', component: () => import('@/views/menu/menu.vue')},
-    { path: '/fullPage', component: () => import('@/components/fullPageApply.vue')},
-    { path: '/element', component: () => import('@/views/element/element.vue') },
-    {path: '/content', component: () => import('@/views/content/content.vue') }
+    { path: '/fullPage', component: () => import('@/components/fullpage/fullPageApply.vue')},
+    { path: '/element-dev', component: () => import('@/views/element/elementDev.vue') },
+    {path: '/echarts', component: () => import('@/views/echarts/echarts.vue') }
 ]
 
 
