@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+            //防抖：频繁触发fn函数时，重置时间，只执行最后一次
+			function _debounce(fn, delay) {
+				var delay = delay || 200;
+				var timer;
+				return function () {
+					// var th = this;
+					var args = arguments;
+					if (timer) {
+						clearTimeout(timer);
+					}
+					timer = setTimeout(() => {
+						timer = null;
+						fn(...args);
+					}, delay);
+				};
+			}
+			let fn = _debounce(function(x){
+				console.log('1111111111111')
+				console.log(x)
+			}, 2000);
+			fn('zhangsan');
+		</script>
+	</body>
+</html>

@@ -1,0 +1,69 @@
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title></title>
+        <style>
+            *{
+                margin:0;
+                padding:0;
+                
+            }
+            div{
+                width:100px;
+                height:100px;
+                background:red;
+                position:fixed;  /* 对元素进行定位*/
+                left:0;
+                top:0;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <div></div>
+    </body>
+    <script>
+        var oDiv = document.getElementsByTagName('div')[0]
+        var body = document.getElementsByTagName('body')[0]
+        
+        // 计算最大偏移距离（后期判断边界时要用到）  oDiv.offsetWidth：表示div的宽度
+        var maxLeft = window.innerWidth - oDiv.offsetWidth
+        var maxTop = window.innerHeight - oDiv.offsetHeight
+        
+        // 鼠标按下事件
+        oDiv.onmousedown = function (e) {
+            var ev = e || event
+            //记录鼠标在元素上的位置
+            var posX = ev.clientX-oDiv.offsetLeft
+            var posY = ev.clientY-oDiv.offsetTop
+            //鼠标移动事件
+            body.onmousemove = function(e){
+                var ev = e || event
+                //计算元素的偏移
+                var left = ev.clientX-posX
+                var top = ev.clientY-posY
+                //判断边界
+                if (left<0){
+                    left=0
+                }else if (left>maxLeft){
+                    left=maxLeft
+                }
+                if (top<0){
+                    top=0
+                }else if(top>maxTop){
+                    top=maxTop
+                }
+                
+                //重新设置属性
+                oDiv.style.left = left + "px"
+                oDiv.style.top = top + "px"
+            }    
+            //鼠标抬起事件
+            body.onmouseup = function(){
+                body.onmousemove = null
+                body.onmouseup = null
+            }
+        }
+        
+    </script>
+</html>

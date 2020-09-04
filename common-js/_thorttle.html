@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+            //限流：当频繁触发fn函数时,2000ms内只执行一次
+			function _throttle(fn, interval) {
+                let canRun = true; 
+                return function () {
+                    if (!canRun) return;
+                    var args = arguments;
+                    canRun = false;
+                    setTimeout(() => { 
+                        fn(...args);
+                        canRun = true;
+                    }, interval);
+                }
+            }
+			let fn = _throttle(function(x){
+				console.log('1111111111111')
+				console.log(x)
+			}, 2000);
+			fn('zhangsan');
+		</script>
+	</body>
+</html>
