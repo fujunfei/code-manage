@@ -8,7 +8,7 @@
         @onLeft="tomorrow"
         @onRight="today"
         :show.sync="kuaTshow">
-        <el-button slot="reference"  @click="changeBlur">按钮</el-button>
+        <el-input slot="reference" v-model="input" placeholder="失去焦点触发" @blur="changeBlur"></el-input>
     </popConfirm> 
 </template>
 <script>
