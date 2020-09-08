@@ -2,7 +2,7 @@
   <el-popover
     v-bind="$attrs"
     v-model="visible"
-    trigger="hover"
+    trigger="manual"
   >
   <div class="el-popconfirm">
     <p class="el-popconfirm__main">
@@ -14,7 +14,7 @@
     ></i>
       {{title}}
     </p>
-    <div class="el-popconfirm__action" style="display: flex;justify-content:space-around;">
+    <div class="el-popconfirm__action" style="display: flex;justify-content:space-around;padding-top: 8px;">
       <el-button 
         size="mini" 
         :type="confirmButtonType" 
@@ -43,7 +43,7 @@ import ElButton from 'element-ui/packages/button';
 import {t} from 'element-ui/src/locale';
 
 export default {
-  name: 'ElPopconfirm',
+  name: 'popConfirm',
   props: {
     show: {
       type: Boolean,
@@ -94,14 +94,16 @@ export default {
     tomorrow() {
       this.visible = false;
       this.$emit('onLeft');
+      this.$emit('update:show', false)
     },
     today() {
       this.visible = false;
+      this.$emit('update:show', false)
       this.$emit('onRight');
     }
   },
   watch: {
-    show(val) {
+    show() {
       this.visible = this.show;
     }
   }
