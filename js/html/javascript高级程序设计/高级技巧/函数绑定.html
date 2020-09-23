@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<button id="my-btn">函数绑定</button>
+		<script>
+			var handler = {
+				message: "Event handled",
+				handleClick: function(){
+					alert(this.message);
+				}
+			};
+			var btn = document.getElementById("my-btn");
+			
+			//执行失败
+			//btn.addEventListener('click',handler.handleClick,false); //此时函数执行环境是dom元素
+			
+			//方法一
+			//btn.addEventListener('click',function(){handler.handleClick()},false);
+			
+			//方法二 自定义bind函数， bind() 函数创建了一个保持了执行环境的函数
+//			function bind(fn, context) {
+//				return function () {
+//					fn.apply(context,[]);
+//				}
+//			}
+//			btn.addEventListener('click',bind(handler.handleClick, handler),false);
+
+			//方法三 原生bind函数
+			btn.addEventListener('click', handler.handleClick.bind(handler),false);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			console.log(null === null);
+			console.log(undefined === undefined);
+			console.log(null === undefined);
+			console.log(null == undefined);
+			console.log(null != undefined);
+			console.log(NaN === NaN);
+			console.log(isNaN(1));
+			if(undefined){
+				console.log("通过");
+			}else{
+				console.log("undefined表示false");
+			}
+			if(null){
+				console.log("通过");
+			}else{
+				console.log("null表示false");
+			}
+			var arr = {
+				arr1:[],
+			};
+			console.log(arr.arr1);
+			if(arr.arr1){
+				for(var i = 0; i < arr.arr1.length; i++){
+					console.log("循环结果："+arr.arr1[i]);
+				}
+				console.log("arr1存在");
+			}
+			var test = null;
+			if(test != undefined){
+				
+			}else{
+				console.log("121");
+			}
+		</script>
+	</body>
+</html>

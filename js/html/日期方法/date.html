@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Date对象</title>
+	</head>
+	<body>
+		<h4>getDay()返回星期方法，值是0-6，0表示星期天</h4>
+		<script>
+			var myTime = new Date(2017,4,15,14,20,30);
+			var processTime = strTime(myTime);
+			var processTime2 = strTime(new Date());
+			//转为2017-01-01 10:00:00 时间格式
+			function strTime(myDate){
+				return myDate.getFullYear()+"-"+(myDate.getMonth()+1)+"-"+myDate.getDate()+"&nbsp"+myDate.getHours()+":"+myDate.getMinutes()+":"+myDate.getSeconds()
+			}
+			document.write(myTime);
+			document.write("<br />"+processTime);
+			document.write("<br />"+processTime2);
+			document.write("<br />"+"今天是星期"+new Date().getDay());
+		</script>
+	</body>
+</html>

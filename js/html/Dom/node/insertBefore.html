@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		.test{
+			color: red;
+		}
+	</style>
+	<body>
+		<h3>在指定子节点位置前添加一个新的子节点</h3>
+		<ul><li>javascript</li><li class="target">angularjs</li></ul>
+		<script>
+			//parentElement.insertBefore(newElement, targetElement);
+			var myNode = document.getElementsByClassName("target")[0];
+			var newElement = document.createElement("li");
+			newElement.innerHTML = "这是测试内容";
+			newElement.className = "test";
+			myNode.parentNode.insertBefore(newElement, myNode);
+		</script>
+	</body>
+</html>

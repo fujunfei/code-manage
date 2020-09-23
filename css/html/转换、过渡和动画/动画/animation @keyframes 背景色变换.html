@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		div{
+			width:  150px;
+			height: 120px;
+			background-color: red;
+			border: solid 1px black;
+			position: relative;
+			left: 50px;
+			top: 50px;
+			
+			animation: percent 5s;
+		}
+		@keyframes myfirst{
+			from {
+				background: red;
+			}
+			to {
+				background: orange;
+			}
+		}
+		@keyframes percent{
+			0% {
+				background: red;
+			}
+			50% {
+				background: orange;
+			}
+			100% {
+				background: red;
+			}
+		}
+	</style>
+	<body>
+		<div></div>
+	</body>
+</html>

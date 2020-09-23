@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			let arr = ['zhngsan', 'lisi'];
+			
+			//模拟了数组的Symbol.iterator属性,这个属性自带了遍历器接口   arr[Symbol.iterator]();
+			function iterators (arr) {
+				let index = 0;
+				return {                    //闭包运用
+					next: function () {
+						let result = index < arr.length ?  {'value': arr[index++], 'done': false} : {'value': undefined, 'done': true};
+						return result;
+					}
+				} 
+			}
+			let item = iterators(arr);
+			console.log(item);
+			console.log(item.next());
+			console.log(item.next());
+			console.log(item.next());
+		</script>
+	</body>
+</html>

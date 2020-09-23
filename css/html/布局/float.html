@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		.container{
+			height: 200px;
+			width: 100%;
+		}
+		.container-left{
+			width: 200px;
+			height: 200px;
+			background-color: brown;
+			float: left;
+		}
+		.container-right{
+			width: 200px;
+			height: 200px;
+			background-color: burlywood;
+			float: right;
+		}
+		.container-middle{
+			height: 200px;
+			margin-left: 200px;
+			margin-right: 200px;
+			background-color: gold;
+		}
+		.container2 > .left{
+			background-color: orange;
+			display: inline-block;
+			float: left;
+			width: 200px;
+			height: 200px;
+		}
+		/*清楚浮动*/
+		.container2::after{
+			content: 'aaa';
+			clear: both;
+			display: block;
+			visibility: hidden;
+			height: 0;
+		}	
+		
+	</style>
+	<body>
+		<!--float 会将内联元素变成内敛块状元素，可以设置宽高-->
+		<!--float 元素尽量往上靠-->
+		<div class="container">
+			<div class="container-left"></div>
+			<div class="container-right"></div>
+			<div class="container-middle">121</div>
+		</div>
+		
+		<div class="container2">
+			<div class="left"></div>
+			<div>float 会将内联元素变成内敛块状元素，可以设置宽高</div>
+		</div>
+		<div>float 元素尽量往上靠</div>
+	</body>
+</html>

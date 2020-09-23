@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul>
+			<li>啊速度ask</li>
+			<li>八岁啊</li>
+			<li>啊桑德兰</li>
+		</ul>
+		<button onclick="removeNode()">移除子节点</button>
+		<script>
+			function removeNode(){
+				var myNode = document.getElementsByTagName("ul")[0];
+				var childNodes = myNode.childNodes;
+				myNode.removeChild(childNodes[1]);
+			}
+		</script>
+	</body>
+</html>

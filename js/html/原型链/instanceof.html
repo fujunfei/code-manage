@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<p>f instanceof Foo检测原理：沿着f对象的_proto_属性一层一层找，如果能对应到Foo.prototype</p>
+		<script>
+			function Foo1 (name) {
+				this.name = name;
+			}
+			var f = new Foo1 ('zhangsan');
+			console.log(f instanceof Foo1);
+			console.log(f instanceof Object);
+		</script>
+	</body>
+</html>

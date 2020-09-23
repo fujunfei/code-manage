@@ -8,13 +8,15 @@
     <body>
         <article style="height: 200px;">
             <div style="height: 50px;width: 50px;border-radius:25px;background-color: blue;" class="relative-values"></div>
+            <div style="height: 50px;width: 50px;border-radius:25px;background-color: blue;" class="relative-values"></div>
             <!-- <div style="height: 50px;width: 50px;background-color:green" class="green"></div> -->
         </article>
         <script>
+            let node = document.getElementsByClassName('relative-values');
             anime({
-                targets: '.relative-values',
-                translateX: [0, 250], // from 100 to 250
-                delay: 500,
+                targets: node,
+                left:  '250px', // from 100 to 250
+                delay: 1000,
                 // direction: 'alternate',
                 // loop: true
             });

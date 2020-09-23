@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="../../../js/angular.js" ></script>
+	</head>
+	<style>
+		.b{
+			color: red;
+		}
+	</style>
+	<body>
+		<h3>将b标签替换成i标签</h3>
+		<div>
+			<b id="oldnode" class="b"> 
+				JavaScript <a href="">测试替换元素节点</a>
+			</b> 是一个很常用的技术，为网页添加动态效果。
+		</div>
+		<br />
+		<button onclick="change()">粗体改为斜体</button>
+		<script>
+			function change(){
+				var oldNode = document.getElementById("oldnode");
+				var newNode = document.createElement("i");
+				newNode.className = "b";
+				var oldNodeChildNodes = oldNode.childNodes;
+				for(var i = 0; i < oldNodeChildNodes.length; i++){
+					console.log(oldNodeChildNodes[i].nodeName);
+					var currentNode = angular.copy(oldNodeChildNodes[i]);
+					newNode.appendChild(currentNode);
+				}
+				oldNode.parentNode.replaceChild(newNode,oldNode);
+			}
+			//注意：appendChild 类似于剪切的功能
+		</script>
+	</body>
+</html>

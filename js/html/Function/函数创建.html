@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			console.log(abc(1,2));    // 3
+//			console.log(test(1,3));   // 类型错误 Uncaught TypeError: test is not a function
+			console.log(test);        // undifined  test变量申明被前置，未完成函数申明
+//			console.log(qwqw);        // 引用错误 Uncaught ReferenceError: qwqw is not defined
+			// 1、函数申明   在执行上下文的时候首先被前置
+			function abc(x,y){
+				return x+y;
+			}
+			
+			// 2、(匿名式)函数表达式    
+			var test = function(x,y){
+				return x+y;
+			}
+			console.log(test);        // ƒ (x,y){return x+y;}
+			
+			// 3、立即执行函数   这种也是函数表达式
+			var num = function(){
+				var x=1,y=2;
+				return x+y;
+			}()
+			console.log(num);
+			
+			// 4、（命名式）函数表达式    作用：递归调用
+			var y = 0;
+			var obj = function get(x){
+				y++;
+				x++;
+				if(x < 5){
+					get(x);
+				}
+				return y;
+			}
+			console.log(obj(1));
+
+			// 5、函数构造器  可以省略new  最后一个参数是新建函数的函数体，前面的参数是新建函数的参数
+			var func = new Function('a','console.log(a)');
+			func("构造函数");
+		</script>
+	</body>
+</html>

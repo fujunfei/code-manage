@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//由小到大
+			var arr = [8,3,4,5,2,10,6];
+			for (let i = 0; i < arr.length; i++) {
+				for (let j = i+1; j < arr.length; j++) {
+					if(arr[i] > arr[j]){
+						let k = arr[i];
+						arr[i] = arr[j];
+						arr[j] = k;
+					}
+				}
+			}
+			console.log(arr);
+		</script>
+	</body>
+</html>

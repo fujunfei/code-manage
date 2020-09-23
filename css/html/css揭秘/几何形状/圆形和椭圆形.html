@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		div{
+			height: 200px;
+			width: 200px;
+			background-color: orange;
+			display: inline-block;
+		}
+		.circle{
+			border-radius: 100px;
+		}
+		.circle1{
+			width: 300px;
+			border-radius: 100px;
+		}
+		.ellipse{
+			width: 400px;
+			border-radius: 50%;
+		}
+		.semicircle{
+			height: 100px;
+			/*border-top-left-radius: 100px;
+			border-top-right-radius: 100px;*/
+			border-radius:100px 100px 0 0 ;
+		}
+		.semiellipse{
+			height: 100px;
+			width: 300px;
+			/*border-top-left-radius: 50%/100%;
+			border-top-right-radius: 50%/100%;*/
+			border-radius:150px / 100px 100px 0 0 ;  /*(同 150px 150px 150px 150px / 100px 100px 0 0, 其中/符号前半段是横轴，后半段是纵轴)*/
+		}
+		.quarterellipse{
+			border-radius: 100% 0 0 0;
+		}
+	</style>
+	<body>
+		<div class="circle"></div>
+		<div class="circle1"></div>
+		<div class="ellipse"></div>   <!--椭圆-->
+		<div class="semicircle"></div>   <!--半圆-->
+		<div class="semiellipse"></div>
+		<div class="quarterellipse"></div>  <!--四分之一椭圆-->
+	</body>
+</html>

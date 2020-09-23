@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			var obj = {
+				name: 'zhang',
+				fn: function(){
+					var _this = this;
+					console.log(this.name);
+					console.log(_this.name);
+					(function(this){
+						console.log(this.name);
+						console.log(_this.name);
+					})(this)
+				}
+			}
+			obj.fn();
+		</script>
+	</body>
+</html>

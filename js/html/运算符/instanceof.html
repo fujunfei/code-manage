@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<h3>instanceof 操作符返回Boolean值，检测是否是原型对象</h3>
+		<h3>instanceof 操作符的判断原理是被检测对象的__proto__是否是指向被参考对象的prototype</h3>
+		<script>
+			var str = new String();
+			console.log(str instanceof String);
+			console.log(str instanceof Object);
+			
+			//自定义对象				
+			var person = function(){};
+			person.prototype.name = "人类";
+			person.prototype.move = function(){
+				alert("走动");
+			}
+			var programmer = function(){};
+			programmer.prototype = new person(); 
+			programmer.__proto__ = person.prototype;
+			programmer.prototype.name = "程序员";
+			person.prototype.action = function(){
+				alert("写代码");
+			}
+			console.log(programmer);  
+			var per = new programmer(); //new实例化的过程执行了per.__proto__ = programmer.prototype;
+			per.move();
+			console.log(per);
+			console.log(per instanceof person);
+			console.log(per instanceof programmer);
+			
+		</script>
+	</body>
+</html>

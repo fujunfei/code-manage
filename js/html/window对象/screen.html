@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		div{
+			width: 500px;
+			height: 300px;
+			background-color: royalblue;
+		}
+	</style>
+	<body>
+		<div></div>
+		<script>
+			var mydiv = document.getElementsByTagName("div");
+			console.log(mydiv[0]);
+			document.write("屏幕总宽度"+screen.width);
+			document.write("屏幕总高度"+screen.height);
+			document.write("<br />"+"屏幕可用宽度"+screen.availWidth);
+			document.write("屏幕可用高度"+screen.availHeight);
+			document.write("<br />"+mydiv[0].offsetWidth);
+		</script>
+	</body>
+</html>

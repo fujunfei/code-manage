@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>animejs</title>
+        <script src="./node_modules/animejs/lib/anime.min.js"></script>
+    </head>
+    <body>
+        <article style="height: 200px;">
+            <div style="height: 50px;width: 50px;background-color: blue; position: relative;" class="css-prop-demo"></div>
+        </article>
+        <script>
+
+            anime({
+                targets: '.css-prop-demo',
+                left: '240px',
+                backgroundColor: '#FFF',
+                borderRadius: ['0%', '50%'],
+                easing: 'easeInOutQuad'
+            });
+        </script>
+    </body>
+</html>

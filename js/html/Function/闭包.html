@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//闭包   被调用的函数返回值 是另外一个函数；
+			function foo(){
+				var test = 30;
+				return function(){       //return 函数，test一直处于内存中，值可以被改动
+					return test+arguments[0];
+				}
+			}
+			var num = foo();
+			console.log(num(5));   //30
+			console.log(num(10));   //31
+			
+			//应用  回调函数  
+//			document.body.innerHTML = "<div id='div1'>div1</div><div id='div2'>div2</div><div id='div3'>div3</div>";
+//			for (var i = 1; i <= 3; i++) {
+//				document.getElementById("div"+i).
+//				    addEventListener("click",function(){
+//			    	console.log(i);    //4，被访问的i是window层的i
+//				})
+//			}
+			document.body.innerHTML = "<div id='div4'>div4</div><div id='div5'>div5</div><div id='div6'>div6</div>";
+			for (var j = 4; j <= 6; j++) {
+				!function(j){
+					document.getElementById("div"+j).
+					    addEventListener("click",function(){
+				    	console.log(j);    //4
+					})
+				}(j);
+			}
+			
+			var test = {
+				a: 40,
+				b: 20,
+				success: function () {
+					console.log('执行成功的代码');
+				},
+				err: function () {
+					console.log('不符合条件！');
+				}
+			}
+			function go(obj) {
+				if (obj.a +obj.b > 50){
+					obj.success();
+				} else {
+					obj.err();
+				}
+			}
+			go(test);
+		</script>
+	</body>
+</html>

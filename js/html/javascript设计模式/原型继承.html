@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			function SuperClass () {
+				this.superValue = true;
+			}
+			SuperClass.prototype.getSuperValue = function () {
+				return this.superValue;
+			}
+			
+			function SubClass () {
+				this.subValue = false;
+			}
+			
+			SubClass.prototype = new SuperClass();
+			SubClass.prototype.getSubValue = function () {
+				return this.subValue;
+			}
+			
+			let instance = new SubClass();
+			console.log(instance);
+		</script>
+	</body>
+</html>

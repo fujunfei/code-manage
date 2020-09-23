@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>animejs</title>
+        <script src="./node_modules/animejs/lib/anime.min.js"></script>
+    </head>
+    <body>
+        <article style="height: 200px;">
+            <div class="battery-log"></div>
+        </article>
+        <script>
+            var logEl = document.querySelector('.battery-log');
+
+            var battery = {
+                charged: '0%',
+                cycles: 1
+            }
+
+            anime({
+                targets: battery,
+                charged: '100%',
+                cycles: 100,
+                round: 1,
+                easing: 'linear',
+                update: function() {
+                    logEl.innerHTML = JSON.stringify(battery.cycles);
+                }
+            });
+        </script>
+    </body>
+</html>

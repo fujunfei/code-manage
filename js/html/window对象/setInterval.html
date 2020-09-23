@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>定时器</title>
+</head>
+<body>
+	<form>
+		<input type="text" id="clock" size="50"  />
+	</form>
+	<br />
+	<button onclick="stop()">停止定时器</button>
+	<script type="text/javascript">
+	  	var attime = null;
+	  	var time = null;
+	  	var goon = true;
+	  	var obj = setInterval(clock,100); 
+	    var timeCtrl = document.getElementsByTagName("button");
+	  	function clock(){
+	    	time=new Date();          
+	    	attime= [time.getHours(),time.getMinutes(),time.getSeconds()].join(":");
+//			attime=time.getHours()+":"+time.getMinutes()+":"+time.getSeconds();
+	    	document.getElementById("clock").value = attime;
+	  	}
+		function stop(){
+			if(goon){
+				//停止运行
+				clearInterval(obj);
+				timeCtrl[0].innerHTML = "开始运行";
+			}else{
+				obj = setInterval(clock,1000);
+				timeCtrl[0].innerHTML = "停止定时器";
+			}
+			goon = !goon;
+		}
+		//注意：如果执行多次setInterval会产生多个obj对象
+	</script>
+</body>
+</html>

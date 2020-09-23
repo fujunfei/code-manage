@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<h3>throw 自定义异常消息</h3>
+		<h3>输入5-10的数字</h3>
+		<input type="text" id="num"/><button onclick="checkon()">输入检测</button>
+		<p id="tips"></p>
+		<script>
+			function checkon(){
+				document.getElementById("tips").innerHTML = "";
+				var messsge = document.getElementById("tips").innerHTML;
+				var num = document.getElementById("num").value;
+				try{
+					if(num == ""){
+						throw "为空";
+					}else if(num < 5){
+						throw "数据小了";
+					}else if(num > 10){
+						throw "数据大了";
+					}else if(isNaN(num)){
+						throw "不是数字";
+					}
+				}catch(err){
+					document.getElementById("tips").innerHTML = err;
+					messsge = err;
+				}finally{
+					if(messsge != ""){
+						document.getElementById("num").value = "";
+					}
+				}
+			}
+		</script>
+	</body>
+</html>

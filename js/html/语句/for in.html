@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+		function Person(){};
+		Person.prototype.x = "x123";
+		var programmer = new Person();
+		programmer.y = "y123";
+		programmer.z = "z123";
+		Object.defineProperty(programmer, "a", {
+		    value: "a123",
+		    enumerable: false               //是否可枚举；
+		});
+		for(var item in programmer){           //item 为key值；
+			console.log(programmer[item]);
+		}
+		console.log("  ");
+		//或
+		for(var item in programmer){
+			if(programmer.hasOwnProperty(item)){
+				console.log(programmer[item]);
+			}
+		}
+		for (let codePoint of 'foo') {
+		  console.log(codePoint)
+		}
+		[1,2,3].forEach(function(i){
+			console.log(i);
+		})
+		</script>
+	</body>
+</html>

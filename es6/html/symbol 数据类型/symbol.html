@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			let habit = Symbol('name');   //name是Symbol实例的描述
+			console.log(habit);    // symbol(name)   具有唯一性
+			console.log(typeof habit);   //symbol   js新的数据类型
+			let obj = {               
+				'name': 'zhangsan',
+				'age': 25,
+				[habit]: '打球'    //不可被枚举
+			}
+			console.log(obj[habit]);
+			for (key in obj) {
+				console.log(obj[key]);
+			}
+		</script>
+	</body>
+</html>

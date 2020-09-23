@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		#test{
+			width: 575px;
+			overflow: hidden;
+			position: absolute;
+		}
+		#preview{
+			position: relative;
+			left: 10px;
+		}
+	</style>
+	<body>
+		<p>把鼠标停留在列表上，可以滑动预览图片</p>
+		<ol id="linkList">
+			<li><a>图片左边部分</a></li>
+			<li><a>图片中间部分</a></li>
+			<li><a>图片右边部分</a></li>
+		</ol>
+		<div id="test">
+			<img src="../../img/1212121.jpg" id="preview"/>
+		</div>
+		<script>
+			function moveElement(el, length) {
+				if (img.movement) {
+					clearTimeout(img.movement);    
+				}
+				let l = parseInt(getComputedStyle(el, null).left);
+				if (l < length) {
+					l++;
+				}
+				if (l > length) {
+					l--;
+				}
+				el.style.left = l+'px';
+				img.movement = setTimeout(function() {moveElement(el, length)}, 10);
+			}
+			let img = document.getElementById('preview');
+			let ol = document.getElementById('linkList');
+			let a = ol.getElementsByTagName('a');
+			a[0].onmouseover = function () {
+				moveElement(img, 10);
+			};
+			a[1].onmouseover = function () {
+				moveElement(img, -535);
+			};
+			a[2].onmouseover = function () {
+				moveElement(img, -1125);
+			};
+		</script>
+	</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<p>一个对象的_proto_属性指向其构造函数的prototype属性</p>
+		<p>如果一个对象的属性没找到，会顺着这个对象的_proto_一直找下去</p>
+		<script>
+			function Foo (name) {
+				this.name = name;
+			}
+			Foo.prototype.call = function () {
+				console.log(this.name);
+			}
+			var f = new Foo ('zhangsan');
+			f.call();
+		</script>
+	</body>
+</html>

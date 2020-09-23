@@ -1,0 +1,7 @@
+p {
+  color: green !important;
+}
+body {
+  background-image: url(../img/gradient2.png);
+  background-repeat: repeat-x;
+}

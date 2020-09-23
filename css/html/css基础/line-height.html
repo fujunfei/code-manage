@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>line-height</title>
+    <style>
+        .cc1{
+            font-size:12px;
+            vertical-align: bottom;
+        }
+        .cc2{
+            font-size:18px;
+            vertical-align: top;
+        }
+        .cc3{
+            font-size:24px;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+    <div style="border:solid 1px red;">
+        <span style="background:blue;color:#fff;font-size:20px;line-height:60px;">
+    		居中xfg&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+        </span>
+    </div>
+    <div class="c1">
+        <span class="cc1">第一段</span>
+        <span class="cc2">第二段</span>
+        <span class="cc3">第三段</span>
+    </div>
+    <!--img元素会和inline元素排版，底部会有空隙，设置vertical-align: bottom-->
+    <div style="background:red">
+        <span>文字</span>
+        <img style="width: 100px; height: 80px; vertical-align: bottom;" src="../../img/bbf730646b8288154cb9f570f33eb410.jpg"/>
+    </div>
+    <div>
+        <div style="float:left">
+            <span>第一段</span>
+        </div>
+        <div style="float:left">
+            <span>第二段</span>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>animejs</title>
+        <script src="./node_modules/animejs/lib/anime.min.js"></script>
+    </head>
+    <body>
+        <article style="height: 200px;">
+            <input class="input" type="text" value="0">
+        </article>
+        <script>
+
+            anime({
+                targets: '.input',
+                value: [0, 1000],
+                round: 1,
+                easing: 'easeInOutExpo'
+            });
+        </script>
+        <style>
+            .input{
+                padding-top: 10px;
+                padding-bottom: 10px;
+                font-size: 16px;
+                color: orangered;
+                text-align: center;
+                background-color: transparent;
+                border: 1px solid orangered;
+            }
+        </style>
+    </body>
+</html>

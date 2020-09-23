@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<script>
+			const obj = { selector: { to: { toutiao: "FE Coder"} }, target: [1, 2, { name: 'byted'}]};
+			function get(obj, ...querys) {
+				return querys.map(query => {
+					return query.split(/\.|\[|\]/)
+						.filter(v => v)
+						.reduce((p, c) => {
+							return p[c]
+						}, obj)
+				})
+			}
+			let result = get(obj, 'selector.to.toutiao', 'target[0]', 'target[2].name');
+			console.log(result)
+		</script>
+	</body>
+
+</html>

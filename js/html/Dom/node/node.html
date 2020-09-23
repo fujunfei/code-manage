@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Dom的node节点介绍</title>
+	</head>
+	<body>
+		<a href="https://www.imooc.com/code/1589">文档对象模型的节点介绍</a>
+		<br />
+		<ul class="abc"><li>这是</li><li>一个</li>测试</ul>
+		<p id="description" title="文字">这是一段文字
+			<span>12</span>
+		</p>
+		<script>
+			var myNode = document.getElementsByTagName("ul")[0];
+			var childNodes = myNode.childNodes;
+			for (var i = 0; i < childNodes.length; i++) {
+				document.write("节点："+childNodes[i].nodeName +"&nbsp"+childNodes[i].nodeType+"&nbsp"+childNodes[i].nodeValue+"<br />");
+			}
+			var p = document.getElementById('description');
+			console.log(p.childNodes);
+		</script>
+	</body>
+</html>

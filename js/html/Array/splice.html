@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>splice()方法从数组中添加/删除/替换项目</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var myArr = [12,22,32,42,52];
+			myArr.splice(1,2);
+			document.write("1、删除元素："+myArr);
+			var myArrs = [12,22,32,42,52];
+			myArrs.splice(1,0,112,122);
+			document.write("<br/>"+"2、新增元素："+myArrs);
+			var myArray = [
+				{"name":"zhangsan","gender":"男","age":20,"company":"软件新城","orders":1},
+				{"name":"liliu","gender":null,"age":null,"company":null,"orders":2},
+				{"name":"wangwu","gender":"男","age":21,"company":"软件新城3","orders":3},
+				{"name":"zhansi","gender":"女","age":22,"company":"软件新城4","orders":4},
+				{"name":"fu","gender":"男","age":22,"company":"软件新城5","orders":5},
+				{"name":"fei","gender":"男","age":22,"company":"软件新城6","orders":6},
+				{"name":"fu12","gender":"男","age":22,"company":"软件新城7","orders":7},
+				{"name":"fei12","gender":"男","age":22,"company":"软件新城8","orders":8}
+			];
+			var deleteArray = [];
+			for (var i = 0; i < myArray.length; i++) {
+				if(myArray[i].orders === 2){
+					var delFromIndex = i;
+					deleteArray.push(myArray[i]);
+					deleteArray.push(myArray[i+1]);
+					break;
+				}
+			};
+			myArray.splice(i,2);
+			for (var i = 0; i < myArray.length; i++) {
+				if(myArray[i].orders === 5){
+					var insertFromIndex = i+1;
+					break;
+				}
+			};
+			for (var i = 0; i < deleteArray.length; i++) {
+				myArray.splice(insertFromIndex+i,0,deleteArray[i]);
+			};
+			document.write("<br />"+"3、将myArray数组中的orders为2和3的元素，挪到orders为5的位置后，思路：先删除orders为2和3的元素，再在orders为5的位置添加这两个元素");
+			console.log(myArray);
+		</script>
+		<br />
+		<a href="http://www.w3school.com.cn/jsref/jsref_splice.asp">示例链接</a>
+	</body>
+</html>

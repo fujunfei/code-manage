@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			Function.prototype.createMethod = function (name, fn) {
+				this.prototype[name] = fn;
+				return this;
+			}
+			
+			let Methods = function () {};
+			Methods.createMethod('checkName', function () {
+				console.log('绑定验证程序1')
+			}).createMethod('checkEmail', function () {
+				console.log('绑定验证程序2')
+			})
+			
+			let checkMethod = new Methods();
+			checkMethod.checkName();
+			checkMethod.checkEmail();
+		</script>
+	</body>
+</html>

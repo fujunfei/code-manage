@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		.test{
+			color: red;
+		}
+	</style>
+	<body>
+		<h3>在指定节点的最后一个子节点位置添加一个新的子节点</h3>
+		<ul>
+			<li>javascript</li>
+			<li>angularjs</li>
+		</ul>
+		<script>
+			var myNode = document.getElementsByTagName("ul")[0];
+			var newElement = document.createElement("li");
+			newElement.innerHTML = "这是测试内容";
+			newElement.className = "test";
+			myNode.appendChild(newElement);
+			//注意：appendChild 类似于剪切的功能
+		</script>
+	</body>
+</html>

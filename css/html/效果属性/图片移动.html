@@ -1,0 +1,39 @@
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			var intervalId;
+
+			function dianwo() {
+				var obj = document.getElementById('mydiv');
+				var y = obj.offsetTop;
+				y -= 10;
+				if(y < 100) {
+					clearInterval(intervalId);
+				}
+				obj.style.top = y;
+
+			}
+
+			function show() {
+				document.getElementById('mydiv').style.display = "block";
+				intervalId = setInterval('dianwo()', 15);
+			}
+		</script>
+		<style type="text/css">
+			.class1 {
+				position: absolute;
+				right: 20px;
+				bottom: 10px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="mydiv" class="class1"><img style="width:151px;height:104px;" src="../../img/bbf730646b8288154cb9f570f33eb410.jpg" /></div>
+		<input type="button" value="点我" onclick="show();" />
+	</body>
+
+</html>

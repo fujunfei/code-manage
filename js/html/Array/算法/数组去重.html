@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//方法1
+			var arr = [2,3,4,4,5,2,3,6];
+			var arr2 = arr.filter(function(element,index,self){
+			return self.indexOf(element) === index;
+			});
+			console.log(arr2);
+			//方法2
+			var arr = [2,3,4,4,5,2,3,6];
+			var obj = {};
+			var tmp = [];
+			for ([keys,value] of arr.entries()){
+				if (!obj.arr[keys]) {
+					obj.arr[keys] = 1;
+					tmp.push(arr[keys]);
+				}
+			}
+			console.log(arr2);
+			//方法3  es6的set数据结构
+		</script>
+	</body>
+</html>

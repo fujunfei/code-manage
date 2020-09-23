@@ -1,0 +1,20 @@
+<!-- 错误示例 -->
+<script>
+    let _module = {
+        id: 'hello',
+        exports: {}
+    }
+    let _part = function (name) {
+        let str = 'hello, ';
+        (function hello (name) {
+            console.log(str + name);
+        })(name);
+    }
+
+    let load = function (_module, _part) {
+        _module.exports = _part;
+        return _module.exports;
+    }
+    let result = load(_module, _part);
+    result('zhangsan');
+</script>

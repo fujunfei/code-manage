@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<h3>delete运算符 用于删除对象的某个属性</h3>
+		<h3>in运算符 用于检测对象是否包含某个key</h3>
+		<script type="text/javascript">
+			var per = {
+				name:"zhang",
+				age:20
+			}
+			delete per.name;
+			console.log("age" in per);
+			console.log("name" in per);
+			console.log(per);
+		</script>
+	</body>
+</html>

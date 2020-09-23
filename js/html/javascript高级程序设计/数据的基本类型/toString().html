@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			
+			let arr = [1,2,3]
+			let str = 'zhangsan'
+			let obj = {name: 'zhangsan'}
+			console.log(arr.toString()) //toString重写过
+			console.log(str.toString())
+			console.log(obj.toString())   //
+			console.log(Object.prototype.toString.call(arr))
+			console.log(Object.prototype.toString.call(str))
+			console.log(Object.prototype.toString.call(obj))
+			//JSON 浏览器实现的原生 也存在第三方JSON库
+			//开发人员定义的任何构造函数都将返回[object Object],
+			//如果是引入第三方的JSON库，通过下面方法检测类型的话，返回的是Object
+			console.log(Object.prototype.toString.call(JSON))
+		</script>
+		
+	</body>
+</html>

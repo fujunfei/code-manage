@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<h3>对象的三种创建方法</h3>
+		<h3>new的实质是：返回的实例对象类型是person类,并且实例对象的_proto_属性指向对象原型即person的prototype,
+			实例对象的prototype为空，未完成prototype上的属性继承</h3>
+		<h3>create的实质是：返回的创建对象类型是Function类，并且创建对象的_proto_属性指向被创建对象本身，创建对象的prototype没有实现继承</h3>
+		<script>
+			//new 的对象有
+			var person = function(){};
+			console.log(person.prototype);
+			person.prototype.feature = "人";
+			
+			//new 创建对象
+			var programmer = new person();
+//			programmer.prototype = new person();           //继承
+//			programmer.prototype = Object.create(person.prototype);  //继承
+			programmer.name = "zhang";
+			programmer.age = 25;
+			console.log(programmer);
+			console.log(programmer.feature);
+			
+			console.log("feature" in programmer);   
+			console.log(programmer.hasOwnProperty("feature"));  
+			programmer.feature = "程序员";
+			console.log(programmer.feature);
+			delete programmer.feature;
+			console.log(programmer.feature);
+			
+			//Object.create 创建对象方法
+			var obj = Object.create({x:1});
+			console.log(obj.x);
+			console.log(obj);
+			console.log(obj.prototype);
+			console.log(obj instanceof Object);
+			
+			var objs = {y:2};
+			console.log(objs.y);
+			console.log(objs);
+			console.log(objs.prototype);
+			
+			var obj1 = Object.create(programmer);
+			console.log(obj1);
+			console.log(obj1.feature);
+			
+			var obj2 = Object.create(person);
+			console.log(obj2);
+			
+//			var obj2 = {};
+//			obj2.prototype = Object.create(person.prototype);
+//			console.log(obj2.feature);
+		</script>
+	</body>
+</html>

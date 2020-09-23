@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		.one{
+			color: red;
+		}
+	</style>
+	<body>
+		<p id="p1" >这是一段测试文字</p>
+		<button onclick="setColor()">设置class类</button>
+		<script>
+			var paragraph = document.getElementById("p1");
+			function setColor(){
+				paragraph.className = "one";
+				console.log("class类名："+paragraph.className);
+			}
+		</script>
+	</body>
+</html>

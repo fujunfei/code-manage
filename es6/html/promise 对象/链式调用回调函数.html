@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//假设调用readFile函数返回了promise对象
+			var readFile = require('fs-readfile-promise');
+			
+			//将依次调用
+			readFile(fileA)
+			.then(function (data) {
+			  console.log(data.toString());
+			})
+			.then(function () {
+			  return readFile(fileB);
+			})
+			.then(function (data) {
+			  console.log(data.toString());
+			})
+			.catch(function (err) {
+			  console.log(err);
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//申明异步请求，返回promise对象
+			const getJSON = function(url) {
+            	const promise = new Promise(function(resolve, reject){
+	                const handler = function() {
+		                if (this.readyState !== 4) {
+		                    return;
+		                }
+		                if (this.status === 200) {
+		                    resolve(this.response);
+		                } else {
+		                    reject(new Error(this.statusText));
+		                }
+	                };
+	                const client = new XMLHttpRequest();
+	                client.open("GET", url);
+	                client.onreadystatechange = handler;
+	                client.responseType = "json";
+	                client.setRequestHeader("Accept", "application/json");
+	                client.send();
+	            });
+	            return promise;
+            };
+
+           	//申明generator函数，管理异步请求
+           	function * getJson (param) {
+           		let result = yield getJSON(param);
+           		console.log(result.name)     //这段代码在第二次使用.next()时执行
+           	}
+           	
+           	//调用getJson函数
+           	let gen = getJson('./posts.json');
+           	gen.next().value.then (function (data) {   //第一次的.next() 返回了key为value,值为promise对象的对象
+           		console.log(data);
+           		return data;      //return的对象将成为下个then回调函数中的参数
+           	}).then (function (data) {     
+           		gen.next(data)     //第二次的.next()里的参数，将会返回给getJson函数的result
+           	})
+		</script>
+	</body>
+</html>

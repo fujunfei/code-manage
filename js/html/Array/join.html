@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>指定符号连接数组元素，生成新的字符串</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var myArr = [2017,11,16];
+			var myStr = myArr.join("-");
+			document.write("返回字符串:"+myStr);
+			
+			function repeatString(str,n){
+				return new Array(n+1).join(str);
+			}
+			document.write("<br />"+"重复字符串："+repeatString("a",3));
+		</script>
+	</body>
+</html>

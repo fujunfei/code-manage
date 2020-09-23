@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/*1、数据属性*/
+			let person = {};
+			Object.defineProperty(person, 'name', {
+				configurable: true,  
+				enumerable: true,  //是否可for in枚举
+				writable: true,
+				value: undefined    //以上均是默认值
+			})
+			console.log(person.name);
+			
+			Object.defineProperty(person, 'name', {
+				writable: false,   //不可写入
+				value: 'zhangsan'
+			})
+			console.log(person.name);
+			
+			person.name = 'lisi';
+			console.log(person.name);
+			
+			
+			/*2、访问器属性 不包含数据值*/
+			/*访问器属性不能直接定义,必须使用Object.defineProperty()来定义*/
+			let book = {
+				edition: 1,
+				_year: 2014,
+			};
+			Object.defineProperty(book, 'year', {
+				configurable: true,  
+				enumerable: true,  //是否可for in枚举
+				get: function () {
+					return this._year;
+				},
+				set: function (newValue) {
+					if (newValue > this._year) {
+						this.edition += newValue - this._year;
+						this._year = newValue;
+					}
+				}
+			})
+			console.log(book.year);
+			book.year = 2015;
+			console.log(book._year,book.edition);
+		</script>
+	</body>
+</html>

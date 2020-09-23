@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>提取字符串substring()， 提取指定长度的字符substr(</title>
+	</head>
+	<body>
+		<script>
+			var myStr = "0123456789";
+			var test = 'abcdefg';
+			document.write("从索引为5的位置开始提取字符串"+myStr.substring(5));
+			document.write("<br />"+"开始位置4，结束位置6,长度为2:"+myStr.substring(4,6));
+			document.write("<br />"+"开始位置为2，长度为3的字符串"+test.substring(test.length-2,0));
+			 var fileSize = parseFloat('0.154455'.substring(0, 4));
+			 console.log(fileSize);
+			 console.log(test);
+			 console.log(location.search.substring(1));
+			 console.log('qwqw=1212'.split('=')[1]);
+		</script>
+	</body>
+</html>

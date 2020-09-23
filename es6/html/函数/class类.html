@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+            // es5写法
+            function Fruit(name, color) {
+                this.name = name;
+                this.color = color;
+            }
+            Fruit.prototype.getDetail = function () {
+                return `${this.name} is a kind of food`
+            }
+
+            let apple = new Fruit('apple', 'red');
+            console.log(apple.color)
+            console.log(apple.getDetail())
+
+
+            // es6 class写法
+            
+		</script>
+	</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<a href="http://www.runoob.com/w3cnote/flex-grammar.html">flex链接</a>
+		<!--<h3>flex-direction: row</h3>
+		<div style="display: flex; flex-direction: row;">
+			<div style="border:orange solid 1px; width: 420px; height: 120px;">1</div>
+			<div style="border:orange solid 1px; width: 420px; height: 120px;">2</div>
+			<div style="border:orange solid 1px; width: 420px; height: 120px;">3</div>
+			<div style="border:orange solid 1px; width: 320px; height: 120px;">4</div>
+			<div style="border:orange solid 1px; width: 320px; height: 120px;">5</div>
+		</div>
+		<h3>flex-direction: row-reverse</h3>
+		<div style="display: flex; flex-direction: row-reverse;">
+			<div style="border:solid 1px; width: 320px; height: 120px;">1</div>
+			<div style="border:solid 1px; width: 320px; height: 120px;">2</div>
+			<div style="border:solid 1px; width: 320px; height: 120px;">3</div>
+			<div style="border:solid 1px; width: 320px; height: 120px;">4</div>
+			<div style="border:solid 1px; width: 320px; height: 120px;">5</div>
+			<div style="border:solid 1px; width: 320px; height: 120px;">6</div>
+			<div style="border:solid 1px; width: 320px; height: 120px;">7</div>
+		</div>
+		<h3>flex-direction: row-reverse</h3>
+		<div style="display: flex; flex-wrap: wrap;">
+			<div style="border:solid 1px; width: 320px; height: 120px;">1</div>
+			<div style="border:solid 1px; width: 320px; height: 120px;">2</div>
+			<div style="border:solid 1px; width: 320px; height: 120px;">3</div>
+			<div style="border:solid 1px; width: 320px; height: 120px;">4</div>
+			<div style="border:solid 1px; width: 320px; height: 120px;">5</div>
+			<div style="border:solid 1px; width: 320px; height: 120px;">6</div>
+			<div style="border:solid 1px; width: 320px; height: 120px;">7</div>
+		</div>
+		<h3>flex-flow: row nowrap</h3>
+		<div style="display: flex; flex-flow: row nowrap;">
+			<div style="border:solid 1px; width: 320px; height: 120px;">1</div>
+			<div style="border:solid 1px; width: 320px; height: 120px;">2</div>
+			<div style="border:solid 1px; width: 320px; height: 120px;">3</div>
+			<div style="border:solid 1px; width: 320px; height: 120px;">4</div>
+			<div style="border:solid 1px; width: 320px; height: 120px;">5</div>
+			<div style="border:solid 1px; width: 320px; height: 120px;">6</div>
+			<div style="border:solid 1px; width: 320px; height: 120px;">7</div>
+		</div>
+		<h3>justify-content: center</h3>
+		<div style="display: flex; flex-direction: row; justify-content: center;">
+			<div style="border:solid 1px; width: 320px; height: 120px;">1</div>
+			<div style="border:solid 1px; width: 320px; height: 120px;">2</div>
+			<div style="border:solid 1px; width: 320px; height: 120px;">3</div>
+			<div style="border:solid 1px; width: 320px; height: 120px;">4</div>
+		</div>-->
+		<h3>justify-content: space-around</h3>
+		<div style="display: flex; flex-direction: row; justify-content: space-around;">
+			<div style="border:solid 1px; width: 320px; height: 120px;">1</div>
+			<div style="border:solid 1px; width: 320px; height: 120px;">2</div>
+			<div style="border:solid 1px; width: 320px; height: 120px;">3</div>
+			<div style="border:solid 1px; width: 320px; height: 120px;">4</div>
+		</div>
+		<h3>align-items: flex-start</h3>
+		<div style="display: flex; flex-direction: column; align-items: flex-start; height:600px;">
+			<div id="test" style="flex:1; border:solid 1px; width: 320px; height: 120px;">1</div>
+			<div style="border:solid 1px; width: 320px; height: 120px;">2</div>
+			<div style="border:solid 1px; width: 320px; height: 120px;">3</div>
+			<div style="border:solid 1px; width: 320px; height: 120px;">4</div>
+		</div>
+		<button onclick="setclick()">测试</button>
+		<script>
+			var test = document.getElementById('test');
+			function setclick(){
+				console.log(123);
+				test.style.height = '50px';
+			}
+		</script>
+	</body>
+</html>

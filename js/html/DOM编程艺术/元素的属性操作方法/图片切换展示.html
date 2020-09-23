@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul>
+			<li><a href="../../../img/42a98226cffc1e17461390ed4690f603728de9ba.jpg" onclick="return changePic(this);">测试图片1</a></li>
+			<li><a href="../../../img/5243fbf2b2119313b705987069380cd790238daf.jpg" onclick="return changePic(this);">测试图片2</a></li>
+			<li><a href="../../../img/d0c8a786c9177f3e348694d67ccf3bc79e3d56be.jpg" onclick="return changePic(this);">测试图片3</a></li>
+		</ul>
+		<img id="placeholder" src="../../../img/timg.jpg" style="width: 500px;height: 300px;"/>
+		<script>
+			let imgEl = document.getElementById('placeholder');
+			function changePic (obj) {
+				console.log(this);
+				let source = obj.getAttribute('href');
+				imgEl.setAttribute('src', source);
+				return false;
+			}
+		</script>
+	</body>
+</html>

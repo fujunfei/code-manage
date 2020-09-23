@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>字符串分割split()</title>
+	</head>
+	<body>
+		<script>
+			var myStr = ",sys,data";
+			document.write("返回一个数组："+myStr.split(","));
+			document.write("<br />"+"返回一个长度为2的数组："+myStr.split(",",2));
+			var data = 'http://192.168.5.222:8189/internet/620101/20180424/WW-20180509000013/申请人身份证明/参考文档6-成功案例.pdf'.split("/");
+			console.log(data);
+			data.splice(0,2);
+			for (let i = 0; i < data.length; i++) {
+				data[0] = 'http://192.168.5.222:8189';
+			}
+			var result = data.join("/");
+			console.log(result);
+		</script>
+	</body>
+</html>

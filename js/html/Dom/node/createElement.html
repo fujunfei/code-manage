@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--createElement 创建元素节点-->
+		<script type="text/javascript">
+		var main = document.body;
+		//创建链接
+		function createa(url,text){
+		    var newNode = document.createElement("a");
+		    newNode.href = url;
+		    newNode.innerHTML = "慕课网";
+		    main.appendChild(newNode);
+		}
+		// 调用函数创建链接
+		createa("https://www.imooc.com","慕课网");
+		</script> 
+	</body>
+</html>

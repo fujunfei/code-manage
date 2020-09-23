@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		.test{
+			display: inline-block;
+			background-color: olivedrab;
+			width: 200px;
+			height: 200px;
+			/*transition: background-color 1s,width 1s;*/
+			transition: all 1s;   /*所有动画时间都是1s*/
+			/*transition-delay: 1s;*/   /*延迟1s*/
+			/*transition-timing-function: linear;*/  /*linear是线性变换*/
+			transition-timing-function: ease;
+		}
+		.test:hover{
+			background-color: orange;
+			width: 500px;
+		}
+	</style>
+	<body>
+		<span class="test"></span>
+	</body>
+</html>

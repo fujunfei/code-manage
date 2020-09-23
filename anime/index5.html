@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>animejs</title>
+        <script src="./node_modules/animejs/lib/anime.min.js"></script>
+    </head>
+    <body>
+        <div id="content" style="overflow:auto;height: 700px;">
+            <svg
+                id="mysvg"
+                xmlns="http://www.w3.org/2000/svg"
+                width=1000
+                height=1000
+                viewBox="0 0 1000 1000"
+                style="background-color: bisque;"
+                >
+                <line class="motion-path-demo" x1="300" y1="380" x2="600" y2="300" style="stroke:red;stroke-width:2" />
+                <foreignObject width="120" height="50">
+                    <body xmlns="http://www.w3.org/1999/xhtml">
+                      <div style="height: 50px;width: 50px;background-color: blue; position: relative;" class="css-prop-demo"></div>
+                    </body>
+                  </foreignObject>
+            </svg>
+        </div>
+        <script>
+            var path = anime.path('.motion-path-demo');
+            anime({
+                targets: '.css-prop-demo',
+                translateX: path('x'),
+                translateY: path('y'),
+                rotate: path('angle'),
+                easing: 'linear',
+                duration: 2000,
+                loop: true
+            });
+        </script>
+        <style>
+        </style>
+    </body>
+</html>

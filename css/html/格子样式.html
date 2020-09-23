@@ -9,8 +9,10 @@
 			width: 100px;
 			height: 100px; 
 			border: 1px solid orange; 
+			/* box-sizing 类似IE的盒模型，border、padding都算在给出的width值内 */
 			box-sizing: border-box;
-			letter-spacing: -0.5em;
+			/* letter-spacing 处理span标签之间的间隙，防止元素溢出容器 */
+			letter-spacing: -0.5em;   
 		}
 		span{
 			width: 50%;

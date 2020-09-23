@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<p>将数组中的元素两两去运行，得出最后一个结果</p>
+		<script>
+			var arr = [5,9,3,10,1];
+			//15作为第一次运行的参数(默认是数组第一个元素)，每次运行后将结果作为第一个参数，第二个参数是数组的第二个元素
+			var max = arr.reduce(function(x,y){    
+				return x > y ? x:y;
+			},15)
+			console.log(max);    //找出最大值
+			
+			var sum = arr.reduce(function(x,y){
+				return x+y;
+			},10)
+			console.log(sum);   //求和
+		</script>
+	</body>
+</html>

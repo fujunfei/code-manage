@@ -1,0 +1,38 @@
+ <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>js原生排序函数 sort</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+		    function sortNum(a,b) {
+		         return a-b;
+		    }
+			var myarr = new Array("80","16","50","6","100","1");
+			document.write("顺序:"+myarr.sort(sortNum));       //sort()参数传函数，a-b为顺序，b-a为倒叙
+			
+			var obj = [
+				{name:"zhangsan",age:30},
+				{name:"lisi",age:25},
+				{name:"wangwu",age:27}
+			]
+			function sortObj(x,y){             //按对象的某个属性进行排序
+				return x.age-y.age;
+			}
+			obj.sort(sortObj);
+			console.log(obj);
+			
+			var obj2 = [
+				{name:"b",age:30},
+				{name:"a",age:25},
+				{name:"c",age:27}
+			]
+			function sortStr(x,y){
+				return x.name - y.name;
+			}
+			obj2.sort(sortStr);
+			console.log(obj2);
+		</script>
+	</body>
+</html>

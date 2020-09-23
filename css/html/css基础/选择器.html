@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		a:hover{
+			color: red;
+		}
+		a::before{
+			content: '';
+			width: 50px;
+			height: 50px;
+			background-color: green;
+			display: block;
+		}
+		[type="button"]{
+			width: 50px;
+			background-color: blue;
+		}
+		.first>span{
+			color: red;
+		}
+		.second span{
+			color: red;
+		}
+		.third,.fourth{
+			color: red;
+		}
+	</style>
+	<body>
+		<p>
+			权重:
+			1、ID选择器  +100
+			2、class选择器  +10
+			3、伪类选择器 a:hover{} +10
+			4、属性选择器：[ng-controller="frameCtrl"]{},  [type="button"]{} +1
+			5、元素选择器 a{} +1
+			6、 伪元素选择器  ::before +1
+			
+			7、 大于符号(>),第一代子元素：.first>span{}
+			8、 空格,所有后代元素   .second span{} 
+			9、 分组选择器（，），给多个标签元素设置同一个样式  .third,.fourth{}
+ 		</p>
+		<a >1212</a>
+		<input type="button" />
+		<p class="first">三年级时，
+			<span>我还是一个胆小如鼠的小女孩</span>，
+			<q>上课从来<span>不敢回答老师提出的问题</span></q>，
+			<span>生怕回答错了老师会批评我。</span>
+			就一直没有这个勇气来回答老师提出的问题。学校举办的活动我也没勇气参加。
+		</p>
+		<p class="second">三年级时，
+			<span>我还是一个胆小如鼠的小女孩</span>，
+			<q>上课从来<span>不敢回答老师提出的问题</span>，生怕回答错了老师会批评我。</q>
+			就一直没有这个勇气来回答老师提出的问题。学校举办的活动我也没勇气参加。
+		</p>
+		<p>三年级时，
+			<span class="third">我还是一个胆小如鼠的小女孩</span>，
+			<q>上课从来<span class="fourth">不敢回答老师提出的问题</span>，生怕回答错了老师会批评我。</q>
+			就一直没有这个勇气来回答老师提出的问题。学校举办的活动我也没勇气参加。
+		</p>
+		<p style="font-family: 'PingFang SC';">三年级时，
+			<span class="six">我还是一个胆小如鼠的小女孩</span>，
+			<q>上课从来<span class="seven">不敢回答老师提出的问题</span>，生怕回答错了老师会批评我。</q>
+			就一直没有这个勇气来回答老师提出的问题。<span class="five">学校举办的活动我也没勇气参加</span>。
+		</p>
+	</body>
+</html>

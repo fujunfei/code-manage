@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//数组 创建
+			var arr = new Array();
+			console.log(arr);
+			var arr1 = new Array(3);   //undefined * 3
+			console.log(arr1);
+			
+			//数组 循环赋值
+			var arrs = new Array();
+			for(var i = 0; i < 5; i++) {
+				arrs[arrs.length] = i;    //方式1
+//				arrDel[i] = i;            //方式2
+			}
+			console.log(arrs);
+			
+			//数组 元素删除
+			var arrDel = ["ce","shi","shu","ju"];
+			delete arrDel[1];                           //通过索引号移除元素，但数组长度不变
+			console.log("delete删除指定元素："+arrDel);
+			console.log("delete删除指定元素后的数组长度："+arrDel.length);
+			
+			var arrDel2 = ["ce","shi","shu","ju"];
+			arrDel2.length -= 1;                        //数组的长度-1，去除最后一个元素
+			console.log("length-1后的数组：" + arrDel2);
+			
+			var arrDel3 = ["ce","shi","shu","ju"];
+			arrDel3.pop();                              //pop()方法去除最后一个元素
+			console.log("pop删除尾部的数组：" + arrDel3);
+			console.log("pop删除尾部的数组长度："+arrDel3.length);
+			
+			var arrDel4 = ["ce","shi","shu","ju"];
+			arrDel4.shift();                             //shift()方法去除最后一个元素
+			console.log("shift删除头部的数组：" + arrDel4);
+			console.log("shift删除头部后的数组长度："+arrDel4.length);
+			
+			//添加元素
+			var arrAdd = ["shi","shu","ju"];
+			arrAdd.unshift("ce");                      //数组的头部添加元素
+			console.log("头部增加元素："+arrAdd);
+			
+			//通过索引判断元素是否存在
+			var arrCon = ["ce",,"shu","ju"];
+			console.log( 1 in arrCon);
+			
+			//数组迭代
+			
+		</script>
+	</body>
+</html>

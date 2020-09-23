@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<h3>属性标签</h3>
+		<h3>属性查看方法和属性创建方法</h3>
+		<h3>属性set和get方法</h3>
+		<script type="text/javascript">
+			var per = {name:"zhang"};
+			console.log(Object.getOwnPropertyDescriptor(per,"name"));	 //查看属性描述
+			
+			Object.defineProperty(per,"sex",{
+				configurable:true,  //可 delete移除      默认false
+				writable:true,    //可重新赋值      默认false
+				enumerable:true,    //可枚举      默认false
+				value:26
+			})
+			console.log(per);
+			console.log(Object.keys(per));  //返回可枚举属性的key组成的数组
+			
+			var person = {};
+			Object.defineProperties(person,{
+				name:{value:"zhangsan",enumerable:false},
+				address:{value:"软件新城",writable:true,enumerable:false},
+				salary:{value:5000,writable:true,enumerable:false},
+				lucky:{
+					get:function(){
+						return Math.random()>0.5 ? "good":"bad";
+					}
+				},
+				promote:{
+					set:function(standard){
+						this.salary *= 1 + standard*0.1; 
+					}
+				}
+			})
+			console.log(person);
+			console.log(person.lucky);
+			person.promote = 2;
+			console.log(person.salary);
+			person.name = "wang";
+			console.log(person.name);
+		</script>
+	</body>
+</html>

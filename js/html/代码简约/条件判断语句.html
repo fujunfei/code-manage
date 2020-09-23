@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" value="按钮" onclick="onButtonClick('guest',1)" />
+		<script>
+			const actions = {
+			  'guest_1':(identity)=>{console.log(identity)},
+			  'guest_2':()=>{console.log('g2')},
+			  'default':()=>{console.log('default')},
+			}
+	
+			const onButtonClick = (identity,status)=>{
+			  let action = actions[`${identity}_${status}`] || actions['default']
+			  action.call(this,identity)
+			}
+		</script>
+
+	</body>
+</html>

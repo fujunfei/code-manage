@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<p id="test">这是一段文字！</p>
+		<p>这是第二段文字！</p>
+		<script>
+			let p = document.getElementById('test');
+			let np = document.createElement('p');
+			let t = document.createTextNode('这是插入的文字！');
+			np.appendChild(t);
+			insertAfter(np, p);
+			function insertAfter (newEle, targetEle) {  //参数为要插入的新元素 和 目标元素
+				let parent = targetEle.parentNode;
+				if (parent.lastChild == targetEle) {  //这里有问题，判断对象相等不能这样判断
+					parent.appendChild(np);
+				} else {
+					parent.insertBefore(np, targetEle.nextSibling);  //nextSibling目标元素的下一个兄弟元素
+				}
+			}
+			function dealData (arr1, arr2) {
+				循环
+				return arr1;
+			}
+		</script>
+	</body>
+</html>

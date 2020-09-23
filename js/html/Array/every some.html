@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			var arr = [1,2,3,4,5];
+			var bool = arr.every(function(item){
+				return item > 2;
+			})
+			var bools = arr.some(function(item){
+				return item > 2;
+			})
+			console.log(bool);
+			console.log(bools);
+		</script>
+	</body>
+</html>

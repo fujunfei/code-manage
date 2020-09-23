@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>overflow生成滚动条 或剪裁</title>
+	</head>
+	<style type="text/css">
+		.contain{
+			border: solid 1px silver;
+			background: silver;
+			width: 300px;
+			height: 200px;
+			/*overflow: scroll;*/
+			overflow: auto;
+			/*overflow: hidden;*/
+			/*overflow: visible;*/  /*默认值*/
+			/*overflow-x: auto;
+			overflow-y: hidden;*/
+		}
+		img{
+			width: 350px;
+			height: 250px;
+		}
+	</style>
+	<body>
+		<div class="contain">
+			<img src="../img/53d74f960001ae9d06000338-300-170.jpg" />
+		</div>
+	</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<h3>catch捕获异常</h3>
+		<script>
+			try{
+				addData();
+			}catch(err){
+				console.log(err);
+				var errs = err;
+			}finally{
+				if(errs){
+					document.write(errs.message);
+				}
+			}
+		</script>
+	</body>
+</html>

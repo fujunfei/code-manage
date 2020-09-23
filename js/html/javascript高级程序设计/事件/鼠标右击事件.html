@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" id="right" onclick="showPreview()" value="鼠标点击事件"/>
+		<script>
+			document.oncontextmenu= function(){return false}
+			function showPreview () {
+                console.log(event)
+            }
+			document.getElementById("right").oncontextmenu = function(){
+				console.log(event)
+			}
+        </script>
+        
+	</body>
+</html>

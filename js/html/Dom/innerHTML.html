@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		.color{
+			color: red;
+		}
+	</style>
+	<body>
+		<h2>innerHTML 属性用于获取或替换 HTML 元素的内容</h2>
+		<h3 id="con">测试内容</h3>
+		<script>
+			var mycon = document.getElementById("con");
+			console.log(mycon);
+			document.write("修改前："+mycon.innerHTML);
+			mycon.innerHTML = "<div class='color'>dqid</div>";
+			document.write("<br />"+"修改后："+mycon.innerHTML);
+		</script>
+	</body>
+</html>

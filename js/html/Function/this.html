@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			var p = {
+				x:1,
+				y:2,
+				get:function(){
+					return this.x + this.y;
+				}
+			};
+			console.log(p.get());
+			
+			var o = Object.create(p);
+			o.x = 3;
+			o.y = 2;
+			console.log(o.get());
+			
+			function obj(){
+				this.x = 3;
+			};
+			var newObj = new obj();
+			console.log(newObj.x);
+			
+			//函数的call方法
+			function cat(){
+			};
+			cat.prototype = {
+				food:"fish",
+				say:function(){
+					alert("I love " + this.food); 
+				}
+			};
+			var blackCat = new cat();
+//			blackCat.say();
+
+			var whiteDog = {food:"bone"};
+			blackCat.say.call(whiteDog);
+			
+			//函数的apply方法 
+			function add(x,y){
+				return x + y + this.a + this.b;
+			};
+			var o = {
+				a:1,
+				b:2
+			};
+//			console.log(add.call(o,3,4));
+			console.log(add.apply(o,[3,4]));
+		</script>
+	</body>
+</html>

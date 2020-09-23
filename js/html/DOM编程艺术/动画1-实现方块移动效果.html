@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		.fk{
+			height: 100px;
+			width: 100px;
+			background-color: orange;
+			position: absolute;
+			top: 250px;
+			left: 20px;
+		}
+	</style>
+	<body>
+		<div class="fk" id="obj"></div>
+		<script>
+			let fangkuai = document.getElementById('obj');
+			function move () {
+				setTimeout(function () {
+					let t = parseInt(getComputedStyle(fangkuai, null).top);
+					let l = parseInt(getComputedStyle(fangkuai, null).left);
+					if (t===100 && l===400) {
+						return;
+					}
+					if (t < 100) {
+						t++;
+					}
+					if (t > 100) {
+						t--;
+					}
+					if (l > 400) {
+						l--;
+					}
+					if (l < 400) {
+						l++;
+					}
+					fangkuai.style.top = t+'px';
+					fangkuai.style.left = l+'px';
+					move();
+				}, 10)
+			}
+			setTimeout(move, 1000);
+			
+		</script>
+	</body>
+</html>

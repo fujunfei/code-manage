@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+	.message{    
+		color: red;
+	}
+</style>
+	<body>
+		<!--createTextNode 创建文本节点-->
+		<script type="text/javascript">
+		    var textNode = document.createTextNode("javascript");
+		    var p = document.createElement("p");
+		    p.className = "message";
+		    p.appendChild(textNode);
+		    document.body.appendChild(p);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		.class1 {
+			position: absolute;
+			right: 20px;
+			bottom: 10px;
+		}
+		
+		@keyframes translate{
+			from{bottom: 10%;}
+			to{bottom: 80%;}
+		}
+	</style>
+	<body>
+		<div class="class1"><img style="width:151px;height:104px;" src="../../../img/bbf730646b8288154cb9f570f33eb410.jpg" /></div>
+		<input type="button" value="点我" onclick="show();" />
+		
+		<script>
+			function show() {
+				document.getElementsByClassName('class1')[0].style.animation = 'translate 2s';
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//generator 返回的是一个具有遍历器接口的对象
+			function * fn () {
+				yield 1+5;
+				console.log(1212);
+				yield 'zhangsan';
+				return 'finish'
+			}
+			let m = fn();
+			console.log(m);
+			console.log(m.next());
+			console.log(m.next());
+//			console.log(m.next());
+		</script>
+	</body>
+</html>

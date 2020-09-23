@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			function Person (word) {
+				this.word = word
+				this.say = function () {
+					console.log(this.word)
+				}
+			}
+			let per = new Person('zhangsan');
+			per.say();
+			
+			//能够对象识别，但每个实例对象都会创建一个新的函数
+		</script>
+	</body>
+</html>

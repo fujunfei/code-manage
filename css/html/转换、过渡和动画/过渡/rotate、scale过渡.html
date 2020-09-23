@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		div{
+			width:  150px;
+			height: 120px;
+			background-color: red;
+			border: solid 1px black;
+			opacity: 0.5;
+			position: absolute;
+			left: 50px;
+			top: 50px;
+		}
+		#div{
+			opacity: 1;
+			transition: transform 2s, background-color 2s;
+		}
+		#div:hover{
+			transform: rotate(360deg) scale(1.2);
+			background-color: orange;
+		}
+		span{
+			display: block;
+		}
+	</style>
+	<body>
+		<div></div>
+		<div id="div">
+			<span>css3</span>
+			<span>过渡</span>
+		</div>
+	</body>
+</html>

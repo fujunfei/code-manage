@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			function Person (name) {
+				this.name = name;
+			}
+			Person.prototype.say = function (word) {
+				console.log(word);
+			}
+			
+			let per = new Person('zhangsan');
+			per.say('zhangsan is playying game');
+			console.log(per);
+		</script>
+	</body>
+</html>

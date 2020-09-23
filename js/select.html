@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			let ul = document.createElement('ul');
+			for (var i =0; i<3; i++) {
+				let li = document.createElement('li');
+				li.innerHTML = i;
+				ul.appendChild(li)
+			}
+			let div = document.createElement('div');
+			div.appendChild(ul);
+			document.getElementsByTagName('body')[0].appendChild(div);
+			
+			
+			div.style.width = '200px';
+			div.style.height = '50px';
+			div.style.border = 'solid 1px black'
+			ul.style.display = 'none';
+			
+			div.onclick = function() {
+				if (ul.style.display === 'none'){
+					ul.style.display = 'block';
+				} else {
+					ul.style.display = 'none';
+				}
+			}
+		</script>
+	</body>
+</html>
