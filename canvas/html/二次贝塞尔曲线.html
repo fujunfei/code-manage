@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<canvas id = "circle" width="600px" height="200px"></canvas>
+		<script>
+            let canvas = document.getElementById('circle');
+            let ctx = canvas.getContext('2d');
+            ctx.moveTo(50, 150);
+            let cpX = 100, cpY = 80;
+            let endX = 200, endY  = 150;
+            ctx.quadraticCurveTo(cpX, cpY, endX, endY);
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.arc(100, 80, 2, 0, Math.PI*2);
+            ctx.fillStyle = 'red';
+            ctx.fill();
+
+            ctx.fillText('控制点', 110, 82);
+		</script>
+	</body>
+</html>

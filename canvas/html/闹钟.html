@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!-- author:Junfei Fu, date:2020/9/24 -->
+		<canvas id = "clock" width="200px" height="200px"></canvas>
+		<script>
+			var dom = document.getElementById('clock');
+			var ctx = dom.getContext('2d');
+			console.log(ctx.canvas.width);
+			//获取宽和高
+			var width = ctx.canvas.width;
+			var height = ctx.canvas.height;
+			var r = width/2;
+			requestAnimationFrame(function step() {
+				getCircle();  // 表盘
+				drawSeconds();
+				drawMin();
+				drawHours();
+				requestAnimationFrame(step);
+			});
+			function getCircle(){
+				ctx.clearRect(0,0,200, 200);
+				ctx.save();
+				//重新设定起始点在中心
+				ctx.translate(r,r);
+				//第一个圆
+				//起始一条路径
+				ctx.beginPath();
+				//线宽
+				ctx.lineWidth = 1;
+				ctx.strokeStyle = '#DDDDDD';
+				//划圆 参数：起始x、y、半径、起始弧度、结束弧度
+				ctx.arc(0,0,r-5,0,2*Math.PI);
+				//绘制已定义的路径
+				ctx.stroke();
+
+				//起始一条路径
+				ctx.beginPath();
+				//线宽
+				ctx.lineWidth = 1;
+				ctx.strokeStyle = '#5E5E5E';
+				//划圆 参数：起始x、y、半径、起始弧度、结束弧度
+				ctx.arc(0,0,r-15,0,2*Math.PI);
+				//绘制已定义的路径
+				ctx.stroke();
+				
+				//文本左右居中
+				ctx.textAlign="center";
+				//文本上下居中
+				ctx.textBaseline="middle";
+				//文本的大小、字体
+				ctx.font = "18px Arial"
+				//设置始终的12个数字位置
+				var hourNumber = [3,4,5,6,7,8,9,10,11,12,1,2];
+				hourNumber.forEach(function(item,index){
+					//获取每个数字所在位置的弧度
+					var rad = 2 * Math.PI / 12 * index;
+					var x = (r-35) * Math.cos(rad);
+					var y = (r-35) * Math.sin(rad);
+					ctx.fillText(item,x,y);
+				})
+				
+				//画60个刻度线
+				for (var i = 0; i < 60; i++) {
+					var radCircle = 2 * Math.PI / 60 * i;
+					var xfCircle =(r-18) * Math.cos(radCircle);
+					var yfCircle =(r-18) * Math.sin(radCircle);
+					var xtCircle =(r-23) * Math.cos(radCircle);
+					var ytCircle =(r-23) * Math.sin(radCircle);
+					ctx.beginPath();
+					ctx.moveTo(xfCircle,yfCircle);
+					ctx.lineTo(xtCircle,ytCircle);
+					if(i % 5 === 0){
+						//设置填充色
+						ctx.strokeStyle = 'red'
+					}else{
+						ctx.strokeStyle = '#CCC'
+					}
+					ctx.stroke();
+				}
+				ctx.restore()
+			}
+			function drawSeconds() {
+				let sec = new Date().getSeconds();
+				let rad = 2 * Math.PI / 60 * (sec -15);
+				let secX = (r - 30) * Math.cos(rad);
+				let secY = (r - 30) * Math.sin(rad);
+				ctx.save();
+				ctx.translate(r, r);
+				ctx.beginPath();
+				ctx.lineCap = "round";
+				ctx.moveTo(0, 0);
+				ctx.lineTo(- 10 * Math.cos(rad),  - 10 * Math.sin(rad));
+				ctx.lineTo(secX, secY);
+				ctx.closePath();
+				ctx.stroke();
+				ctx.restore();
+			}
+			function drawMin() {
+				let min = new Date().getMinutes();
+				console.log(min)
+				let rad = 2 * Math.PI / 60 * (min -15);
+				let minX = (r - 45) * Math.cos(rad);
+				let minY = (r - 45) * Math.sin(rad);
+				ctx.save();
+				ctx.translate(r, r);
+				ctx.strokeStyle = 'orange';
+				ctx.lineCap = "round";
+				ctx.lineWidth  = 2;
+				ctx.beginPath();
+				ctx.moveTo(0, 0);
+				ctx.lineTo(- 8 * Math.cos(rad),  - 8 * Math.sin(rad));
+				ctx.lineTo(minX, minY);
+				ctx.closePath();
+				ctx.stroke();
+				ctx.restore();
+			}
+			function drawHours() {
+				let sec = new Date().getHours();
+				let min = new Date().getMinutes();
+				let rad = 2 * Math.PI / 12 * (sec -3) + 2 * Math.PI / 60 * (parseInt(min/12)) ;
+				let secX = (r - 60) * Math.cos(rad);
+				let secY = (r - 60) * Math.sin(rad);
+				ctx.save();
+				ctx.translate(r, r);
+				ctx.strokeStyle = 'red';
+				ctx.lineCap = "round";
+				ctx.lineWidth  = 3;
+				ctx.beginPath();
+				ctx.moveTo(0, 0);
+				ctx.lineTo(- 3 * Math.cos(rad),  - 3 * Math.sin(rad));
+				ctx.lineTo(secX, secY);
+				ctx.closePath();
+				ctx.stroke();
+				ctx.restore();
+			}
+		</script>
+	</body>
+</html>
