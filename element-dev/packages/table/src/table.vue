@@ -36,6 +36,7 @@
       :style="[bodyHeight]">
       <table-body
         :context="context"
+        :dragIndex="dragIndex"
         :store="store"
         :stripe="stripe"
         :row-class-name="rowClassName"
@@ -109,6 +110,7 @@
         fixedBodyHeight]">
         <table-body
           fixed="left"
+          :dragIndex="dragIndex"
           :store="store"
           :stripe="stripe"
           :highlight="highlightCurrentRow"
@@ -170,6 +172,7 @@
         fixedBodyHeight]">
         <table-body
           fixed="right"
+          :dragIndex="dragIndex"
           :store="store"
           :stripe="stripe"
           :row-class-name="rowClassName"
@@ -244,7 +247,12 @@
           return [];
         }
       },
-
+      dragIndex: {
+        type: Array,
+        default: function() {
+          return [];
+        }
+      },
       size: String,
 
       width: [String, Number],
@@ -342,6 +350,12 @@
     },
 
     methods: {
+      dragStart(row, column, cell, event) {
+        this.$emit('dragStart', row, column);
+      },
+      dragLeave(row, column, cell, event) {
+        this.$emit('dragLeave', row, column);
+      },
       getMigratingConfig() {
         return {
           events: {
@@ -349,7 +363,6 @@
           }
         };
       },
-
       setCurrentRow(row) {
         this.store.commit('setCurrentRow', row);
       },

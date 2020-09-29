@@ -21,6 +21,12 @@ export default {
     store: {
       required: true
     },
+    dragIndex: {
+      type: Array,
+      default: function() {
+        return [];
+      }
+    },
     stripe: Boolean,
     context: {},
     rowClassName: [String, Function],
@@ -117,7 +123,6 @@ export default {
       }
       return index;
     },
-
     isColumnHidden(index) {
       if (this.fixed === true || this.fixed === 'left') {
         return index >= this.leftFixedLeafCount;
@@ -229,7 +234,34 @@ export default {
       const widthArr = columns.map(({ realWidth }) => realWidth).slice(index, index + colspan);
       return widthArr.reduce((acc, width) => acc + width, -1);
     },
-
+    dragStart(event, row) {
+      const table = this.table;
+      const cell = getCell(event);
+      if (cell) {
+        const column = getColumnByCell(table, cell);
+        const hoverState = table.hoverState = {cell, column, row};
+        this.table.dragStart(hoverState.row, hoverState.column, hoverState.cell, event);
+      }
+    },
+    dragLeave(event, row) {
+      event.stopPropagation();
+      const table = this.table;
+      const cell = getCell(event);
+      if (cell) {
+        const column = getColumnByCell(table, cell);
+        const hoverState = table.hoverState = {cell, column, row};
+        this.table.dragLeave(hoverState.row, hoverState.column, hoverState.cell, event);
+      }
+    },
+    // dragEnter(event, row) {
+    //   const table = this.table;
+    //   const cell = getCell(event);
+    //   if (cell) {
+    //     const column = getColumnByCell(table, cell);
+    //     const hoverState = table.hoverState = {cell, column, row};
+    //     this.table.dragEnter(hoverState.row, hoverState.column, hoverState.cell, event);
+    //   }
+    // },
     handleCellMouseEnter(event, row) {
       const table = this.table;
       const cell = getCell(event);
@@ -372,6 +404,10 @@ export default {
                 class={ this.getCellClass($index, cellIndex, row, column) }
                 rowspan={ rowspan }
                 colspan={ colspan }
+                draggable= { this.dragIndex.includes(column.property) }
+                on-dragstart={ ($event) => this.dragStart($event, row) }
+                on-dragleave={ ($event) => this.dragLeave($event, row) }
+                on-dragover={ ($event) => this.dragIndex.includes(column.property) && $event.preventDefault() }
                 on-mouseenter={ ($event) => this.handleCellMouseEnter($event, row) }
                 on-mouseleave={ this.handleCellMouseLeave }>
                 {

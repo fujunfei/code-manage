@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+<style>
+    td{
+        border:1px solid #444;
+        padding:20px;
+        width:100px;
+        height:50px;
+    }
+    td div{
+        cursor:pointer;
+    }
+</style>
+ 
+<script type="text/javascript">
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function drag(ev) {
+    ev.dataTransfer.setData("Text",ev.target.id);   
+}
+
+function drop(ev) {
+    ev.preventDefault();
+    var data=ev.dataTransfer.getData("Text");
+    ev.target.appendChild(document.getElementById(data));
+}
+</script>
+<body>
+    <table>
+        <tr>
+            <td class="mytd" ondrop="drop(event)" ondragover="allowDrop(event)">
+                <div id="div1" class="tablediv" draggable="true" ondragstart="drag(event)" >1111111</div>
+            </td>
+            <td class="mytd" ondrop="drop(event)" ondragover="allowDrop(event)">
+                <div id="div2" class="tablediv" draggable="true" ondragstart="drag(event)" >2222222</div>
+            </td>
+            <td class="mytd" ondrop="drop(event)" ondragover="allowDrop(event)">
+                <div id="div3" class="tablediv" draggable="true" ondragstart="drag(event)" >333333333</div>
+            </td>
+            <td class="mytd" ondrop="drop(event)" ondragover="allowDrop(event)">
+                <div id="div4" class="tablediv" draggable="true" ondragstart="drag(event)" >4444444444</div>
+            </td>
+            <td>
+                <div class="tablediv">555555555555</div>
+            </td>
+        </tr>
+    </table>
+
+
+</body>
+</html>
