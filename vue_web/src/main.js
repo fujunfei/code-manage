@@ -6,8 +6,8 @@ import 'fullpage.js/dist/fullpage.min.css'
 // import './fullpage.scrollHorizontally.min' // Optional. When using fullpage extensions
 import VueFullPage from 'vue-fullpage.js'
 import echarts from 'echarts'
-import ElementUI from 'element-ui'
-import 'element-ui/lib/theme-chalk/index.css'
+import ElementUI from 'element-ui-fujf'
+import 'element-ui-fujf/lib/theme-chalk/index.css'
 
 import VueRouter from 'vue-router'
 import routes from '@/router'

@@ -21,7 +21,8 @@
                 <i class="el-icon-location"></i>
                 <span>导航一</span>
             </template>
-            <el-menu-item index="element-dev">element-ui二次开发</el-menu-item>
+            <el-menu-item index="element-dev">popConfirm</el-menu-item>
+            <el-menu-item index="table">el-table表格拖拽</el-menu-item>
             <el-menu-item index="echarts">echarts</el-menu-item>
         </el-submenu>
         <el-menu-item index="2">
