@@ -6,7 +6,8 @@ import 'fullpage.js/dist/fullpage.min.css'
 // import './fullpage.scrollHorizontally.min' // Optional. When using fullpage extensions
 import VueFullPage from 'vue-fullpage.js'
 import echarts from 'echarts'
-import ElementUI from 'element-ui-fujf'
+import ElementUI from 'element-ui'
+import {Table} from 'element-ui-fujf'
 import 'element-ui-fujf/lib/theme-chalk/index.css'
 
 import VueRouter from 'vue-router'
@@ -18,6 +19,7 @@ Vue.prototype.$echarts = echarts;
 Vue.use(VueFullPage);
 Vue.use(VueRouter)
 Vue.use(ElementUI, { size: 'small' });
+Vue.use(Table)
 
 // Vue.config.productionTip = false
 const router = new VueRouter({

@@ -1,12 +1,17 @@
 <template>
-    <div style="width:500px">
-        <h3 style="padding:20px">配置dragIndex 支持表格的整行拖拽、单元格上下拖拽</h3>
+    <div style="width:600px">
+        <h3 style="padding:20px">table组件是从element-ui-fujf按需引入的， 配置dragIndex 支持表格的整行拖拽、单元格上下拖拽</h3>
         <el-table
         :data="tableData"
         :dragIndex="dragIndex"
         @dragStart='dragStart'
         @dragLeave='dragLeave'
+        ref="multipleTable"
         style="width: 100%">
+        <el-table-column
+          type="selection"
+          width="55">
+        </el-table-column>
         <el-table-column
             prop="date"
             label="日期"
