@@ -253,15 +253,6 @@ export default {
         this.table.dragLeave(hoverState.row, hoverState.column, hoverState.cell, event);
       }
     },
-    // dragEnter(event, row) {
-    //   const table = this.table;
-    //   const cell = getCell(event);
-    //   if (cell) {
-    //     const column = getColumnByCell(table, cell);
-    //     const hoverState = table.hoverState = {cell, column, row};
-    //     this.table.dragEnter(hoverState.row, hoverState.column, hoverState.cell, event);
-    //   }
-    // },
     handleCellMouseEnter(event, row) {
       const table = this.table;
       const cell = getCell(event);
