@@ -24,6 +24,7 @@ export default {
     data(){
         return {
             kuaTshow: false,
+            input: ''
         }
     },
     methods: {

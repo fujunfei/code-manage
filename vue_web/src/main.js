@@ -9,6 +9,7 @@ import echarts from 'echarts'
 import ElementUI from 'element-ui'
 import {Table} from 'element-ui-fujf'
 import 'element-ui-fujf/lib/theme-chalk/index.css'
+import contextmenu from "vue-contextmenujs"
 
 import VueRouter from 'vue-router'
 import routes from '@/router'
@@ -20,6 +21,7 @@ Vue.use(VueFullPage);
 Vue.use(VueRouter)
 Vue.use(ElementUI, { size: 'small' });
 Vue.use(Table)
+Vue.use(contextmenu)
 
 // Vue.config.productionTip = false
 const router = new VueRouter({

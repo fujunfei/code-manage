@@ -5,7 +5,8 @@ const routes = [
     { path: '/fullPage', component: () => import('@/components/fullpage/fullPageApply.vue')},
     { path: '/element-dev', component: () => import('@/views/element/elementDev.vue') },
     {path: '/echarts', component: () => import('@/views/echarts/echarts.vue') },
-    {path: '/table', component: () => import('@/views/element/table.vue') }
+    {path: '/table-drag', component: () => import('@/views/element/table.vue') },
+    {path: '/table-drag-select', component: () => import('@/views/element/tableDragSelect.vue') }
 ]
 
 

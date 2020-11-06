@@ -3,6 +3,7 @@
         <h3 style="padding:20px">table组件是从element-ui-fujf按需引入的， 配置dragIndex 支持表格的整行拖拽、单元格上下拖拽</h3>
         <el-table
         :data="tableData"
+        @row-contextmenu="rowContextmenu"
         :dragIndex="dragIndex"
         @dragStart='dragStart'
         @dragLeave='dragLeave'
@@ -59,6 +60,21 @@
         }
       },
       methods: {
+         rowContextmenu(item,row){
+            console.log(item,row);
+            event.preventDefault();
+            this.$contextmenu({
+                items: [
+                    {
+                        label: "添加计划",
+                        onClick: () => {},
+                    }
+                ],
+                event,
+                zIndex: 3,
+                minWidth: 110,
+            })
+        },
         dragStart(row, column) {
           this.start = JSON.parse(JSON.stringify(row));
           this.dragColumn = column.property;
