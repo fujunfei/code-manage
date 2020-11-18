@@ -11,6 +11,7 @@
             id="table"
             @row-click="rowClick"
             @row-contextmenu="rowContextmenu"
+            @selection-change="selectedChange"
             v-drag>
             <el-table-column  :type="isType" width="55" align="center"></el-table-column>
             <!--列表的表头循环-->
@@ -53,6 +54,8 @@ export default {
                     vnode.context.toggleShow=false;  
                     //确保用户在移动鼠标的时候只初始化一次选中
                     var flag = true;
+                    //表格范围内的点击事件
+                    var mousedown = true;
                     //用来存储列表
                     var selList = [];
                     //获得指令下的dom对应的表格
@@ -66,6 +69,10 @@ export default {
                     //时时获得
                     top=getY(el);
                     left=getX(el);
+                    // shift起始点位置
+                    if (!evt.shiftKey) {
+                        vnode.context.shiftStart = {startX, startY, top, left};
+                    }
                     var selDiv = document.createElement("div");
                     selDiv.style.cssText = "position:absolute;width:0px;height:0px;font-size:0px;margin:0px;padding:0px;z-index:1000;filter:alpha(opacity:60);opacity:0.6;display:none;";
                     selDiv.id = "selectDiv";
@@ -75,10 +82,10 @@ export default {
                     var _x = null;
                     var _y = null;
                     vnode.context.clearEventBubble(evt);
-                    // //打开开关
-                    vnode.context.mouseflag = true;
                     // //鼠标拖动时画框
                     document.onmousemove = function () {
+                        // //打开开关
+                        vnode.context.mouseflag = true;
                         evt = window.event || arguments[0];
                         _x = (evt.x || evt.clientX);
                         _y = (evt.y || evt.clientY);
@@ -120,22 +127,11 @@ export default {
                                 var st = selList[i].offsetHeight + selList[i].offsetTop;
                                 if (sl > _l && st > _t && selList[i].offsetLeft < _l + _w && selList[i].offsetTop < _t + _h) {
                                     if (selList[i].className.indexOf("seled") == -1) {                                    
-                                        selList[i].className = selList[i].className + " seled";
                                         vnode.context.$refs.table.toggleRowSelection(vnode.context.tableData[i],true)
-                                        //把选中的都存入到table标签中的已选中
-                                        if(vnode.context.tableData[i])
-                                            vnode.context.multipleSelection.push(vnode.context.tableData[i]);
                                     }
                                 } else {
                                     if (selList[i].className.indexOf("seled") != -1 ) {                                 
-                                        selList[i].className = "el-table__row";
                                         vnode.context.$refs.table.toggleRowSelection(vnode.context.tableData[i],false);
-                                        vnode.context.multipleSelection.forEach((ele,i)=>{
-                                            //这里没用对象是否相等用的是传入table中的唯一的myKey字段
-                                            if(ele[vnode.context.myKey]==vnode.context.tableData[i][vnode.context.myKey] ){
-                                                vnode.context.multipleSelection.splice(i,1);
-                                            }
-                                        })
                                     }
                                 }
                             }
@@ -163,14 +159,59 @@ export default {
                     }
                     //在鼠标抬起后做的重置
                     document.onmouseup = function () {
+                        if (!mousedown) {
+                            mousedown = false;
+                            return;
+                        };
+                        let event = window.event || arguments[0];
+                        _x = (event.x || event.clientX);
+                        _y = (event.y || event.clientY);
+                        var scrolling=el.getElementsByClassName("is-scrolling-none");
+
+                        var _l = _x-left+scrolling[0].scrollLeft, _t = _y-top - 28 + scrolling[0].scrollTop;
+                        var _w = Math.abs(_x - startX), _h = Math.abs(_y - startY);
+                        for (var i = 0; i < fileNodes.length; i++) {
+                            if (fileNodes[i].className.indexOf("el-table__row") != -1) {
+                                selList.push(fileNodes[i]);
+                            }
+                        }
+                        if (event.ctrlKey && !vnode.context.mouseflag && event.button !== 2) {
+                            for (let i = 0; i < selList.length; i++) {
+                                var sl = selList[i].offsetWidth + selList[i].offsetLeft;
+                                var st = selList[i].offsetHeight + selList[i].offsetTop;
+                                if (sl > _l && st > _t && selList[i].offsetLeft < _l + _w && selList[i].offsetTop < _t + _h) {
+                                    if (selList[i].className.indexOf("seled") == -1) {   
+                                        vnode.context.$refs.table.toggleRowSelection(vnode.context.tableData[i],true);
+                                    } else {
+                                        vnode.context.$refs.table.toggleRowSelection(vnode.context.tableData[i],false);
+                                    }
+                                } 
+                            }
+                        } else if (event.shiftKey && !vnode.context.mouseflag && event.button !== 2) {
+                            vnode.context.tableData.forEach((ele)=>{
+                                vnode.context.$refs.table.toggleRowSelection(ele,false)
+                            })
+                            let shiftStart = vnode.context.shiftStart;
+                            _l = Math.min(_x, shiftStart.startX) - shiftStart.left + scrolling[0].scrollLeft, 
+                            _t = Math.min(_y, shiftStart.startY) - shiftStart.top - 28 + scrolling[0].scrollTop;
+                            _w = Math.abs(_x - shiftStart.startX), 
+                            _h = Math.abs(_y - shiftStart.startY);
+                            for (let i = 0; i < selList.length; i++) {
+                                var sl = selList[i].offsetWidth + selList[i].offsetLeft;
+                                var st = selList[i].offsetHeight + selList[i].offsetTop;
+                                if (sl > _l && st > _t && selList[i].offsetLeft < _l + _w && selList[i].offsetTop < _t + _h) {
+                                    if (selList[i].className.indexOf("seled") == -1) {   
+                                        vnode.context.$refs.table.toggleRowSelection(vnode.context.tableData[i],true);
+                                    }
+                                } 
+                            }
+                        }
                         //把鼠标移动事初始化
                         document.onmousemove=null;
-                        if (selDiv) {
-                            document.getElementsByClassName("el-table__body")[0].removeChild(selDiv);
-                        }
-                        selList = null, _x = null, _y = null, selDiv = null, startX = null, startY = null, evt = null;
+                        selList = null, _x = null, _y = null, startX = null, startY = null, evt = null;
+                        mousedown = false;
                         vnode.context.mouseflag = false;
-                        vnode.context.$handleSelect();
+                        vnode.context.clearEventBubble(event);
                     };
                 };
             }
@@ -226,7 +267,10 @@ export default {
             //当前右键点击的列
             currentRow:[],
             //当前滚动的距离，
-            targetScroll:0
+            targetScroll:0,
+            shiftStart: {
+                
+            },  //shift起始点位置
         }
     },
     methods: {
@@ -241,34 +285,35 @@ export default {
             else
                 evt.returnValue = false;
         },
-        //列表单击选中事件
-        rowClick(row) {
-            let flag=true;           
-            //确定当前的row的index
-            var index = 0;
-            this.tableData.forEach((ele,i)=>{
-                if(ele[this.myKey] == row[this.myKey]){
-                    index = i+1;
-                }
+        // 选中变化
+        selectedChange(selection) {
+            this.$nextTick(() => {
+                this.multipleSelection = selection;
+                this.$emit('handleSelect', this.multipleSelection);
             })
-            this.toggleShow = false;
-            //如果有就移除
-            this.multipleSelection.forEach((ele,i)=>{
-                if(ele[this.myKey]==row[this.myKey]){
-                    this.$refs.table.toggleRowSelection(row,false);
-                    //后期优化吧 element的方法用不了 只能自己改变类名
-                    this.$refs.table.$el.getElementsByTagName("tr")[index].className = "el-table__row";
-                    this.multipleSelection.splice(i,1);
-                    flag = false;
-                }
+            // 去除所有选中背景色
+            this.tableData.forEach((row, index) => {
+                this.$refs.table.$el.getElementsByTagName("tr")[index+1].className = 'el-table__row';
             })
-            //如果没有就push
-            if(flag){
-                this.$refs.table.toggleRowSelection(row,true);
-                this.multipleSelection.push(row);
-                //后期优化吧 element的方法用不了 只能自己改变类名
+            selection.map(row => {
+                //确定选中row的index
+                let index = 0;
+                this.tableData.forEach((ele,i)=>{
+                    if(ele[this.myKey] == row[this.myKey]){
+                        index = i+1;
+                    }
+                })
+                // 添加选中样式                
                 this.$refs.table.$el.getElementsByTagName("tr")[index].className = "el-table__row seled";
-            }       
+            })
+        },
+        //列表单击选中事件
+        rowClick(row, column, event) {
+            if (event.ctrlKey || event.shiftKey) return;
+            this.tableData.forEach((ele)=>{
+                this.$refs.table.toggleRowSelection(ele, false)
+            })
+            this.$refs.table.toggleRowSelection(row, true);      
         },
         //列表右键点击事件
         rowContextmenu(row, event){
