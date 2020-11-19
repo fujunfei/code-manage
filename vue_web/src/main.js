@@ -11,6 +11,9 @@ import {Table} from 'element-ui-fujf'
 import 'element-ui-fujf/lib/theme-chalk/index.css'
 import contextmenu from "vue-contextmenujs"
 
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-balham.css';
+
 import VueRouter from 'vue-router'
 import routes from '@/router'
 

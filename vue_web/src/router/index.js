@@ -6,7 +6,8 @@ const routes = [
     { path: '/element-dev', component: () => import('@/views/element/elementDev.vue') },
     {path: '/echarts', component: () => import('@/views/echarts/echarts.vue') },
     {path: '/table-drag', component: () => import('@/views/element/table.vue') },
-    {path: '/table-drag-select', component: () => import('@/views/element/tableDragSelect.vue') }
+    {path: '/table-drag-select', component: () => import('@/views/element/tableDragSelect.vue') },
+    {path: '/ag-grid', component: () => import('@/views/element/ag-grid.vue')}
 ]
 
 

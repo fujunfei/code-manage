@@ -339,7 +339,7 @@ export default {
         },
         //每页条数变化 ui定死每页20条
         handleSizeChange(val) {
-            console.log(val)
+            // console.log(val)
             // console.log(`每页 ${val} 条`);
         },
         //当前页变化
