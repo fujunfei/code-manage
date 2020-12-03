@@ -18,6 +18,11 @@ import VueRouter from 'vue-router'
 import routes from '@/router'
 
 import '@/styles/index.less' // global css
+import '@/styles/variables/defaultTheme.css'
+import '@/styles/variables/greenTheme.css'
+import '@/styles/variables/orangeTheme.css'
+import '@/styles/variables/pinkTheme.css'
+
 
 Vue.prototype.$echarts = echarts;
 Vue.use(VueFullPage);
@@ -37,3 +42,4 @@ new Vue({
   router,
   render: h => h(App),
 })
+

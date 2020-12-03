@@ -5,7 +5,7 @@ function component() {
 
     element.innerHTML = 'Hello webpack'
     var btn = document.createElement('button');
-    btn.innerHTML = 'Click me and check the console!';
+    btn.innerHTML = 'Click me and check the console  11!';
     btn.onclick = printMe;
     element.appendChild(btn);
     return element;

@@ -1,20 +1,24 @@
 <template>
-  <div id="app">
+  <div id="app" class="default">
     <Menus></Menus>
     <router-view style="position:absolute;left:200px;"></router-view>
+    <theme></theme>
   </div>
 </template>
 
 <script>
 import Menus from '@/views/menu/menu.vue'
-
+import theme from '@/views/menu/theme.vue'
 export default {
   name: 'App',
-  components: {Menus}
+  components: {Menus, theme},
+  mounted() {
+  }
 }
 </script>
 
-<style>
+<style  lang="less">
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

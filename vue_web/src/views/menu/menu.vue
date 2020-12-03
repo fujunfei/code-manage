@@ -4,6 +4,7 @@
         width: 200px;
         float: left;
         box-sizing: border-box;
+        background: var(--theme-color);
         li {
             width: 200px;
             margin: 0 0px;
