@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="default">
+  <div id="app">
     <Menus></Menus>
     <router-view style="position:absolute;left:200px;"></router-view>
     <theme></theme>
@@ -9,10 +9,15 @@
 <script>
 import Menus from '@/views/menu/menu.vue'
 import theme from '@/views/menu/theme.vue'
+import { mapState } from 'vuex'
 export default {
   name: 'App',
   components: {Menus, theme},
+  computed: {
+    ...mapState('user', ['defaultTheme']),
+  },
   mounted() {
+    document.getElementById('app').className = this.defaultTheme;
   }
 }
 </script>

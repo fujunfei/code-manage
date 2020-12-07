@@ -8,6 +8,7 @@
     </div>
 </template>
 <script>
+import { mapMutations } from 'vuex';
 export default {
     data() {
         return {
@@ -15,9 +16,10 @@ export default {
         }
     },
     methods: {
+        ...mapMutations('user', ['setTheme']),
         changeTheme(type) {
             document.getElementById('app').className = type;
-            // this.current_theme = type;
+            this.setTheme(type);
         }
     }
 }
