@@ -18,7 +18,10 @@ export default {
     methods: {
         ...mapMutations('user', ['setTheme']),
         changeTheme(type) {
-            document.getElementById('app').className = type;
+            // 按需加载样式文件
+            import(`@/styles/variables/${type}Theme.css`).then(() => {
+                document.getElementById('app').className = type;
+            })
             this.setTheme(type);
         }
     }

@@ -19,10 +19,10 @@ import routes from '@/router'
 import store from '@/store'
 
 import '@/styles/index.less' // global css
-import '@/styles/variables/defaultTheme.css'
-import '@/styles/variables/greenTheme.css'
-import '@/styles/variables/orangeTheme.css'
-import '@/styles/variables/pinkTheme.css'
+// import '@/styles/variables/defaultTheme.css'   改为按需加载
+// import '@/styles/variables/greenTheme.css'
+// import '@/styles/variables/orangeTheme.css'
+// import '@/styles/variables/pinkTheme.css'
 
 
 Vue.prototype.$echarts = echarts;

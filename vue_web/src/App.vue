@@ -17,7 +17,9 @@ export default {
     ...mapState('user', ['defaultTheme']),
   },
   mounted() {
-    document.getElementById('app').className = this.defaultTheme;
+    import(`@/styles/variables/${this.defaultTheme}Theme.css`).then(() => {
+      document.getElementById('app').className = this.defaultTheme;
+    })
   }
 }
 </script>
