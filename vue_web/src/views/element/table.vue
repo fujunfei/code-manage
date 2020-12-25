@@ -1,3 +1,12 @@
+<style lang="less" scoped>
+.table{
+  display: flex;
+  justify-content: space-around;
+  >span{
+    display: inline-block;
+  }
+}
+</style>
 <template>
     <div style="width:600px">
         <h3 style="padding:20px">table组件是从element-ui-fujf按需引入的， 配置dragIndex 支持表格的整行拖拽、单元格上下拖拽</h3>
@@ -7,6 +16,7 @@
         :dragIndex="dragIndex"
         @dragStart='dragStart'
         @dragLeave='dragLeave'
+        :height="'500'"
         ref="multipleTable"
         style="width: 100%">
         <el-table-column
@@ -28,6 +38,14 @@
             label="地址">
         </el-table-column>
         </el-table>
+        <!-- <div style="height:500px;overflow:scroll">
+          <div v-for="item in tableData" :key="item.id" style="width:500px;height:40px" class="table">
+            <el-checkbox v-model="item.checked"></el-checkbox>
+            <span>{{item.date}}</span>
+            <span>{{item.name}}</span>
+            <span>{{item.address}}</span>
+          </div>
+        </div> -->
     </div>
 </template>
 
@@ -35,23 +53,7 @@
     export default {
       data() {
         return {
-          tableData: [{
-            date: '2016-05-02',
-            name: '王小虎1',
-            address: '上海市普陀区金沙江路 1518 弄'
-          }, {
-            date: '2016-05-04',
-            name: '王小虎2',
-            address: '上海市普陀区金沙江路 1517 弄'
-          }, {
-            date: '2016-05-01',
-            name: '王小虎3',
-            address: '上海市普陀区金沙江路 1519 弄'
-          }, {
-            date: '2016-05-03',
-            name: '王小虎4',
-            address: '上海市普陀区金沙江路 1516 弄'
-          }],
+          tableData: [],
           start: '',
           end: '',
           dragColumn: '',
@@ -99,6 +101,16 @@
           this.tableData[end][this.dragColumn] = this.start[this.dragColumn];
           this.tableData = [...this.tableData];
         }
-      }
+      },
+      created(){
+        for(var i=0;i<20;i++){
+            this.tableData.push({
+                date: '2016-05-03',
+                name: '王小虎'+i,
+                address: '上海市普陀区金沙江路 1518 弄dddddddddddddddddddddddddddd',
+                id:i
+            })
+        }
+    }
     }
   </script>
