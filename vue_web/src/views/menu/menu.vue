@@ -26,6 +26,7 @@
             <el-menu-item index="table-drag">el-table表格拖拽</el-menu-item>
             <el-menu-item index="table-drag-select">el-table表格拖拉框选</el-menu-item>
             <el-menu-item index="ag-grid">ag-grid</el-menu-item>
+            <el-menu-item index="vxe-table">vxe-table</el-menu-item>
             <el-menu-item index="echarts">echarts</el-menu-item>
         </el-submenu>
         <el-menu-item index="2">

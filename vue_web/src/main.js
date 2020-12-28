@@ -19,11 +19,12 @@ import routes from '@/router'
 import store from '@/store'
 
 import '@/styles/index.less' // global css
-// import '@/styles/variables/defaultTheme.css'   改为按需加载
-// import '@/styles/variables/greenTheme.css'
-// import '@/styles/variables/orangeTheme.css'
-// import '@/styles/variables/pinkTheme.css'
 
+import 'xe-utils'
+import VXETable from 'vxe-table'
+import 'vxe-table/lib/style.css'
+
+Vue.use(VXETable)
 
 Vue.prototype.$echarts = echarts;
 Vue.use(VueFullPage);
