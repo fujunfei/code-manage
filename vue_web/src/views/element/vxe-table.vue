@@ -4,25 +4,28 @@
     }
 </style>
 <template>
-    <vxe-table
-        border
-        show-overflow
-        highlight-hover-row
-        height="300"
-        class="vxe_table"
-        ref="table"
-        :checkbox-config="{trigger: 'row', highlight: true, range: true}"
-        @checkbox-change="checkChange"
-        @checkbox-range-end="checkRangeEnd"
-        :sort-config="{trigger: 'cell'}"
-        :data="tableData">
-        <vxe-table-column type="checkbox" width="80"></vxe-table-column>
-        <vxe-table-column type="seq" width="100"></vxe-table-column>
-        <vxe-table-column field="name" title="Name" sortable></vxe-table-column>
-        <vxe-table-column field="sex" title="Sex"></vxe-table-column>
-        <vxe-table-column field="age" title="Age"></vxe-table-column>
-        <vxe-table-column field="address" title="Address" show-overflow></vxe-table-column>
-    </vxe-table>
+    <div>
+        <vxe-toolbar custom print></vxe-toolbar>
+        <vxe-table
+            border
+            show-overflow
+            highlight-hover-row
+            height="300"
+            class="vxe_table"
+            ref="table"
+            :checkbox-config="{trigger: 'row', highlight: true, range: true}"
+            @checkbox-change="checkChange"
+            @checkbox-range-end="checkRangeEnd"
+            :sort-config="{trigger: 'cell'}"
+            :data="tableData">
+            <vxe-table-column type="checkbox" width="80"></vxe-table-column>
+            <vxe-table-column type="seq" width="100"></vxe-table-column>
+            <vxe-table-column field="name" title="Name" sortable></vxe-table-column>
+            <vxe-table-column field="sex" title="Sex"></vxe-table-column>
+            <vxe-table-column field="age" title="Age"></vxe-table-column>
+            <vxe-table-column field="address" title="Address" show-overflow></vxe-table-column>
+        </vxe-table>
+    </div>
 </template>
 <script>
 export default {
