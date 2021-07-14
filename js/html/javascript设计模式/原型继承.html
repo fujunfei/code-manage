@@ -7,14 +7,15 @@
 	<body>
 		<script>
 			function SuperClass () {
-				this.superValue = true;
+				this.superValue = [1,2];
 			}
 			SuperClass.prototype.getSuperValue = function () {
 				return this.superValue;
 			}
 			
 			function SubClass () {
-				this.subValue = false;
+				// this.subValue = false;
+				SuperClass.call(this)
 			}
 			
 			SubClass.prototype = new SuperClass();
