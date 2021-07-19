@@ -29,9 +29,9 @@
             <el-menu-item index="vxe-table">vxe-table</el-menu-item>
             <el-menu-item index="echarts">echarts</el-menu-item>
         </el-submenu>
-        <el-menu-item index="2">
+        <el-menu-item index="formConfig">
             <i class="el-icon-menu"></i>
-            <span slot="title">导航二</span>
+            <span slot="title">表单可配置</span>
         </el-menu-item>
         <el-menu-item index="fullPage">
             <i class="el-icon-document"></i>

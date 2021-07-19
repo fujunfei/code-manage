@@ -17,6 +17,7 @@ import 'ag-grid-community/dist/styles/ag-theme-balham.css';
 import VueRouter from 'vue-router'
 import routes from '@/router'
 import store from '@/store'
+import vuetify from '@/plugins/vuetify' // path to vuetify export
 
 import '@/styles/index.less' // global css
 
@@ -43,6 +44,7 @@ new Vue({
   el: '#app',
   router,
   store,
+  vuetify,
   render: h => h(App),
 })
 
