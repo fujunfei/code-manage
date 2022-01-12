@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://unpkg.com/vue@next"></script>
+	</head>
+	<body>
+		<div id = 'hello-vue'>
+			{{message}}
+			<div>{{origin}}</div>
+			<input v-model='origin'>
+		</div>
+		<script >
+			const config = {
+				data() {
+					return {
+						message: 'sasa'
+					}
+				},
+				setup() {
+					const origin =  Vue.ref(10)
+					Vue.onMounted(() => {
+            setTimeout(()=> {
+              origin.value++
+            }, 500)
+          })
+					return {
+						origin
+					}
+				}
+			}
+			const app = Vue.createApp(config)
+			console.log(app)
+		  const component =	app.mount('#hello-vue')
+			console.log(component)
+		</script>
+	</body>
+</html>

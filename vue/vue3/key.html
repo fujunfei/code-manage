@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://unpkg.com/vue@next"></script>
+	</head>
+  <style>
+    .fade-enter-active,
+    .fade-leave-active {
+      transition: opacity 0.5s ease;
+    }
+
+    .fade-enter-from,
+    .fade-leave-to {
+      opacity: 0;
+    }
+  </style>
+	<body>
+		<div id = 'hello-vue'>
+      <transition name="fade">
+        <span :key="text">{{ text }}</span>
+      </transition>
+    </div>
+		<script>
+      const config = {
+        data() {
+          return {
+            text: '这是更新前的测试文字'
+          }
+        },
+        mounted() {
+          setTimeout(()=>{
+            this.text = '绑定key会强制替换元素'
+          }, 1000)
+        }
+      }
+		 const app =	Vue.createApp(config)
+     app.mount('#hello-vue')
+		</script>
+	</body>
+</html>

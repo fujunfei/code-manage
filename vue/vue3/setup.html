@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://unpkg.com/vue@next"></script>
+	</head>
+	<body>
+		<div id = 'hello-vue'>
+      <btn :count='count' @add-count='addCount'></btn>
+    </div>
+		<script>
+      // import { ref } from 'vue'
+      const config = {
+        data() {
+          return {
+            count: 0
+          }
+        },
+        methods: {
+          addCount() {
+            this.count++
+          }
+        },
+      }
+      const components = {
+        template: `
+          <button @click="btnClick">
+            <div>基数：{{origin}}</div>
+            You clicked me {{ count }} times.
+            <div>乘积结果*：{{multiplication}} </div>
+            <div>结果+基数：{{add}} </div>
+          </button>
+        `,
+        data() {
+          return {
+          }
+        },
+        methods: {
+          btnClick() {
+            this.$emit('addCount')
+          }
+        },
+        props: ['count'],
+        setup(props, context) {
+          context.emit('addCount')
+          //  基数 10
+          const origin =  Vue.ref(10)
+          // 乘法
+          const multiplication =  Vue.ref(0)
+          // 创建对prop的响应式
+          const {count} = Vue.toRefs(props)
+          // 生命周期函数 onMounted
+          Vue.onMounted(() => {
+            setTimeout(()=> {
+              origin.value += 10
+            }, 1000)
+          })
+          // 计算属性 加法
+          const add = Vue.computed(() =>  {
+            return multiplication.value + origin.value
+          })
+          // 监听器  点击次数
+          Vue.watch(count,()=> {
+            multiplication.value = count.value * origin.value
+          })
+          return {
+            origin,
+            multiplication,
+            add
+          }
+        }
+      } 
+      const app = Vue.createApp(config)
+      app.component('btn', components)
+      app.mount('#hello-vue')
+		</script>
+	</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://unpkg.com/vue@next"></script>
+	</head>
+	<body>
+		<div id = 'hello-vue'>{{reactiveFoo.msg}}</div>
+		<script>
+			const config = {
+				data() {
+					return {
+						message: 'sasa'
+					}
+				},
+				setup() {
+					const foo = {msg: 12}
+					const reactiveFoo = Vue.reactive(foo)
+					setTimeout(() => {
+						foo.msg = 1
+						console.log(reactiveFoo.msg)
+					}, 1000)
+					// reactiveFoo.msg = 123
+					console.log(foo === Vue.toRaw(reactiveFoo))
+					return {
+						foo,
+						reactiveFoo
+					}
+				}
+			}
+			const app = Vue.createApp(config)
+			console.log(app)
+		  const component =	app.mount('#hello-vue')
+			console.log(component)
+		</script>
+	</body>
+</html>

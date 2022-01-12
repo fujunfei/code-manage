@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://unpkg.com/vue@next"></script>
+	</head>
+	<body>
+		<div id = 'hello-vue'>{{message}}</div>
+		<script>
+			const config = {
+				data() {
+					return {
+						message: 'sasa'
+					}
+				},
+        globalProperties: {
+          auther: 'fjf'
+        },
+        errorHandler: (err, vm, info) => {
+          debugger
+        }
+			}
+      const app = Vue.createApp(config)
+			const vm = app.mount('#hello-vue')
+      console.log(app)
+      console.log(vm)
+		</script>
+	</body>
+</html>
