@@ -14,7 +14,7 @@
     "element-ui-fujf": "^1.0.0",
     "less": "^3.12.2",
     "less-loader": "^6.2.0",
-    "node-sass": "^5.0.0",
+    "node-sass": "^7.0.0",
     "style-resources-loader": "^1.4.1",
     "vue": "^2.6.11",
     "vue-class-component": "^7.2.6",
