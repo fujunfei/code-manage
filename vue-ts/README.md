@@ -1,5 +1,7 @@
 # vue-ts
 
+Vue3 + Ts + ant-design-vue 实现的Todo 记录功能
+
 ## Project setup
 ```
 npm install
@@ -15,10 +17,4 @@ npm run serve
 npm run build
 ```
 
-### Lints and fixes files
-```
-npm run lint
-```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
