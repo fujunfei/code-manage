@@ -1,7 +1,11 @@
 <template>
   <div class="about">
     <h1>花的颜色：{{ output }}</h1>
-    <about-1 :book="book" :releaseVersion="releaseVersion"></about-1>
+    <about-1
+      :book="book"
+      :releaseVersion="releaseVersion"
+      :flowerName="flowerName"
+    ></about-1>
   </div>
 </template>
 <script lang="ts">
@@ -34,6 +38,7 @@ export default defineComponent({
     interface DataProps {
       // 数组申明
       flowerColor: Array<string>;
+      flowerName: string;
       releaseVersion: Flower;
     }
 
@@ -45,7 +50,9 @@ export default defineComponent({
 
     const state: DataProps = reactive({
       flowerColor: ["red", "yellow"],
+      flowerName: Flower[2],
       releaseVersion: Flower["Lavender"],
+      releaseVersions: Flower["Lavender"],
     });
     const output = computed((): string => {
       return state.flowerColor.join("、");

@@ -1,7 +1,8 @@
 <template>
   <div>
     {{ book.name }} 版本：{{ book.version }}
-    <span v-if="!!releaseVersion">- {{ releaseVersion }}</span>
+
+    <span v-if="!!releaseVersion">- {{ flowerName }} {{ releaseVersion }}</span>
   </div>
 </template>
 <script lang="ts">
@@ -13,7 +14,11 @@ export default defineComponent({
     },
     releaseVersion: {
       type: Number,
-      default: ''
+      default: 0,
+    },
+    flowerName: {
+      type: String,
+      default: "",
     },
   },
 });
