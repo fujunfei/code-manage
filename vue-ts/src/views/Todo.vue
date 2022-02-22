@@ -54,7 +54,7 @@
 </div>
 </template>
 <script lang="ts">
-import { defineComponent, reactive, ref, toRefs, watchEffect, createVNode, onMounted,getCurrentInstance  } from 'vue';
+import { defineComponent, reactive, ref, toRefs, watchEffect, createVNode, onMounted  } from 'vue';
 import { DownOutlined,MenuOutlined, CloseOutlined } from '@ant-design/icons-vue';
 import { Modal } from 'ant-design-vue';
 import { ExclamationCircleOutlined } from '@ant-design/icons-vue';
@@ -82,7 +82,6 @@ export default defineComponent({
       Completed
     } 
     
-    const { ctx: _this }: any = getCurrentInstance()
     const content = ref<string>('')
     const state = reactive<State>({
       list: [],
@@ -147,7 +146,6 @@ export default defineComponent({
         onEnd({ newIndex, oldIndex }) {
           const currRow = state.filerList.splice(oldIndex, 1)[0]
           state.filerList.splice(newIndex, 0, currRow)
-          _this.$forceUpdate()
         },
       })
     }
